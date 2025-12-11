@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KirilovTech Blog Post</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Fira+Code&display=swap" rel="stylesheet">
+  <style>
+    /* Base */
+    body {
+      background-color: #0f172a;
+      color: #f1f5f9;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      line-height: 1.7;
+    }
+    a, .text-muted { color: #cbd5e1 !important; text-decoration: none; }
+    h1, h2, h3 { color: #e2e8f0; }
+
+    /* Navbar */
+    .navbar-brand { font-weight: 700; font-size: 1.5rem; letter-spacing: 1px; }
+    .nav-link { font-weight: 500; transition: color 0.2s; }
+    .nav-link:hover { color: #3b82f6 !important; }
+
+    /* Blog container */
+    main.container { max-width: 900px; padding-top: 3rem; padding-bottom: 3rem; }
+
+    /* Headings */
+    h1.fw-bold { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.8rem; margin-top: 2.5rem; margin-bottom: 1rem; border-left: 4px solid #3b82f6; padding-left: 0.75rem; }
+
+    /* Blog images */
+    .blog-content img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin: 1.5rem 0;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease;
+    }
+    .blog-content img:hover { transform: scale(1.02); }
+
+    /* Paragraphs and lists */
+    .blog-content p { font-size: 1.1rem; margin-bottom: 1.2rem; }
+    .blog-content ul, .blog-content ol { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+    .blog-content li { margin-bottom: 0.7rem; }
+
+    /* Buttons */
+    .btn-outline-secondary {
+      border-color: #3b82f6;
+      color: #3b82f6;
+      transition: all 0.3s ease;
+    }
+    .btn-outline-secondary:hover {
+      background-color: #3b82f6;
+      color: #0f172a;
+      border-color: #3b82f6;
+    }
+
+    /* Footer */
+    footer { border-top: 1px solid #334155; margin-top: 3rem; color: #94a3b8; font-size: 0.9rem; }
+    footer a { color: #3b82f6 !important; }
+
+    /* Code / highlighted text */
+    code, pre {
+      background-color: #1e293b;
+      color: #f1f5f9;
+      padding: 0.2rem 0.4rem;
+      border-radius: 6px;
+      font-family: 'Fira Code', monospace;
+    }
+
+    /* Blog content background card */
+    .blog-content {
+      background-color: #1e293b;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      transition: box-shadow 0.3s ease;
+    }
+    .blog-content:hover { box-shadow: 0 15px 40px rgba(0,0,0,0.7); }
+
+    /* Badges */
+    .badge.bg-primary { background-color: #3b82f6 !important; font-weight: 500; }
+
+    /* Responsive tweaks */
+    @media (max-width: 768px) {
+      h1.fw-bold { font-size: 2rem; }
+      h2 { font-size: 1.5rem; }
+      .blog-content { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-transparent py-3">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">KirilovTech</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- BLOG POST -->
+<main class="container">
+  <h1 class="fw-bold">Introducing Merkur: Our Prototype Smart Home AI</h1>
+  <p class="text-muted">Published: Sep 12, 2025 | Category: <span class="badge bg-primary">AI</span></p>
+
+  <img src="../src/merkur.jpg" alt="Merkur project">
+
+  <div class="blog-content">
+    <p>Smart homes are no longer a futuristic dream—they are here. Yet, controlling every device intelligently and naturally has remained a challenge. This is where <strong>Merkur</strong> comes in: a prototype home assistant that combines voice control, OpenHAB integration, and cutting-edge AI to manage your entire smart home.</p>
+
+    <h2>The Prototype Setup</h2>
+    <p>Merkur currently runs on a standard PC, although its architecture is lightweight enough to eventually run on a Raspberry Pi or similar small devices. For hardware, it uses a microphone for capturing voice commands and a speaker for responses. The focus so far has been on building a <strong>fully functional proof-of-concept</strong> that demonstrates the system’s capabilities with real devices.</p>
+
+    <h2>OpenHAB Integration</h2>
+    <p>OpenHAB serves as the backbone of Merkur’s device control. Communication is handled via REST API, making it compatible with virtually any device supported by OpenHAB. In our prototype, we’ve successfully integrated:</p>
+    <ul>
+      <li>A smart lamp for lighting control</li>
+      <li>Climate devices such as thermostats and air conditioners</li>
+      <li>Xiaomi smart home products, including sensors and smart plugs</li>
+    </ul>
+    <p>Since Merkur talks directly to OpenHAB, it can theoretically control any device in your smart home ecosystem, from lights to security systems, without writing custom code for each new product.</p>
+
+    <h2>AI-Powered Voice Control</h2>
+    <p>The heart of Merkur’s intelligence is an advanced AI engine. While the exact integration method is currently proprietary, the AI allows Merkur to:</p>
+    <ul>
+      <li>Understand natural language commands, including complex multi-step instructions</li>
+      <li>Maintain context across multiple commands, enabling conversational control</li>
+      <li>Execute orchestrated actions across multiple devices simultaneously</li>
+    </ul>
+    <p>For example, a single command like <em>“Dim the living room lights, set the temperature to 22°C, and start the evening playlist”</em> is fully understood and executed by Merkur without needing multiple steps or manual configuration.</p>
+
+    <h2>Features in Action</h2>
+    <p>Even as a prototype, Merkur demonstrates a wide array of capabilities:</p>
+    <ul>
+      <li><strong>Voice-first control:</strong> Speak naturally, and Merkur will understand and act accordingly.</li>
+      <li><strong>Full OpenHAB compatibility:</strong> Any device already integrated in OpenHAB can be controlled without extra work.</li>
+      <li><strong>Context awareness:</strong> Merkur can handle follow-up commands, remembering what you just asked it to do.</li>
+      <li><strong>Custom automations:</strong> Prototype users can define multi-device routines, like “Good night” to turn off lights, close blinds, and adjust the thermostat.</li>
+    </ul>
+
+    <h2>Building Merkur</h2>
+    <p>Developing Merkur has been both exciting and challenging. Key steps included:</p>
+    <ol>
+      <li>Setting up REST-based communication with OpenHAB to allow seamless device control.</li>
+      <li>Integrating AI to parse natural language into actionable commands while maintaining context.</li>
+      <li>Creating a lightweight, modular architecture so the system can eventually run on smaller hardware like a Raspberry Pi.</li>
+      <li>Ensuring the prototype is flexible enough to scale to new devices and automations without rewriting code.</li>
+    </ol>
+    <p>While Merkur is already fully functional, the team is continuing to refine the AI integration and polish the user experience. In the coming months, we expect to finalize the system and release it as a consumer-ready smart home assistant.</p>
+
+    <h2>Looking Ahead</h2>
+    <p>Merkur represents the future of intelligent home automation: a system that is voice-first, AI-driven, and compatible with any OpenHAB-supported device. Our prototype shows that controlling your smart home can be as natural as talking to a friend, and we’re just getting started.</p>
+  </div>
+
+  <div class="mt-4 text-center">
+    <a class="btn btn-outline-secondary" href="../blogs.html">← Back</a>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="container py-4 d-flex justify-content-between align-items-center">
+  <div class="text-muted">© <span id="year"></span> KirilovTech — Built with curiosity.</div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EnderCloud — Hivatalos Szerver!</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{ --accent1:#00FFA3; --accent2:#00BFFF; --accent3:#8A00FF; }
+    html,body{height:100%;margin:0;background:#05060a;color:#e6eef8;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
+
+    /* HERO SLIDESHOW */
+    .hero{position:relative;height:86vh;min-height:560px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+    .slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transform:scale(1.02);transition:opacity .9s ease, transform .9s ease}
+    .slide.active{opacity:1;transform:scale(1)}
+    .hero-overlay{position:relative;z-index:4;text-align:center;padding:2rem;backdrop-filter:blur(6px)}
+    .hero-title{font-size:56px;font-weight:800;letter-spacing:1.2px;margin:0}
+    .hero-sub{color:rgba(255,255,255,0.85);margin-top:.5rem}
+    .hero-controls{display:flex;gap:.6rem;justify-content:center;margin-top:1.2rem}
+    .btn{background:linear-gradient(90deg,var(--accent1),var(--accent2));padding:.6rem 1rem;border-radius:12px;border:none;font-weight:700;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,0.6)}
+    .ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:.55rem .9rem;border-radius:12px}
+
+    /* BIG images + gallery */
+    .gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+    .g-item{position:relative;overflow:hidden;border-radius:14px;box-shadow:0 12px 40px rgba(2,6,23,0.6);cursor:pointer}
+    .g-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.2,.9,.2,1)}
+    .g-item:hover img{transform:scale(1.12) rotate(.2deg)}
+    .g-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 30%, rgba(0,0,0,0.55));display:flex;align-items:flex-end;padding:18px;gap:10px}
+    .g-title{font-weight:800;font-size:18px}
+    .g-desc{color:#c6d6e6;font-size:13px}
+
+    /* CARD TILT */
+    .tilt{transform-style:preserve-3d;transition:transform .25s ease, box-shadow .25s ease}
+    .tilt:hover{box-shadow:0 28px 80px rgba(2,6,23,0.85);}
+
+    /* MODES & PLUGINS */
+    section{padding:3.2rem 1rem}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .mode-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:1.4rem;border-radius:14px;border:1px solid rgba(255,255,255,0.04)}
+    .mode-card img{height:76px;margin-bottom:.7rem}
+    .mode-card h3{margin:0 0 .4rem 0}
+    .mode-card p{color:#b8d0e5}
+
+    /* IP badge */
+    .ip-badge{display:inline-flex;align-items:center;gap:.9rem;padding:.75rem 1rem;border-radius:12px;background:linear-gradient(90deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.06);cursor:pointer}
+    .ip-text{font-weight:800;font-size:1.4rem}
+    .ip-badge:hover{transform:translateY(-6px);box-shadow:0 18px 60px rgba(0,0,0,0.6)}
+
+    @media (max-width:980px){ .hero-title{font-size:34px} .grid-3{grid-template-columns:1fr} .gallery{grid-template-columns:repeat(6,1fr)} }
+  </style>
+</head>
+<body>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="slide" style="background-image:url('images/hero-1.jpg')"></div>
+    <div class="slide" style="background-image:url('images/hero-2.jpg')"></div>
+    <div class="slide" style="background-image:url('images/hero-3.jpg')"></div>
+
+    <div class="hero-overlay" style="z-index:5">
+      <h1 class="hero-title">EnderCloud — Nem a megszokott</h1>
+      <p class="hero-sub">Survival szerver — egyelőre csak Survival. Csatlakozz és éld át a túlélést!</p>
+
+
+      <div style="height:16px"></div>
+
+      <div style="display:flex;gap:12px;justify-content:center;align-items:center;">
+        <div class="ip-badge" onclick="copyIP()" id="ipBadge">
+          <div style="display:flex;flex-direction:column;align-items:flex-start">
+            <span style="font-size:.75rem;color:#9fb0c8">Szerver IP</span>
+            <span class="ip-text" id="ip-text">server.endercloud.host</span>
+          </div>
+          <button class="ghost">Másolás</button>
+        </div>
+        <button class="btn" onclick="document.getElementById('modes').scrollIntoView({behavior:'smooth'})">Játékmódok</button>
+        <a href="https://discord.gg/W7u3PKcjxJ" target="_blank" rel="noopener" class="btn">Discord</a>
+      </div>
+
+      <div class="hero-controls" style="margin-top:18px">
+        <button class="ghost" onclick="prevSlide()">←</button>
+        <button class="ghost" onclick="nextSlide()">→</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- GALLERY -->
+  <section id="gallery" style="max-width:1200px;margin:0 auto">
+    <h2 style="font-size:24px;margin-bottom:12px">Kiemelt képek</h2>
+    <div class="gallery" style="grid-auto-rows:260px">
+      <div class="g-item" style="grid-column:span 7; grid-row:span 2" onclick="openLightbox(0)">
+        <img src="images/gallery-skyblock.jpg" alt="Skyblock screenshot">
+        <div class="g-overlay"><div>
+          <div class="g-title">Közösségi túlélés</div>
+          <div class="g-desc">Építs, bányássz és küzdj a túlélésért.</div>
+        </div></div>
+      </div>
+      <div class="g-item" style="grid-column:span 5; grid-row:span 1" onclick="openLightbox(1)">
+        <img src="images/question.jpg" alt="question">
+        <div class="g-overlay"><div>
+          <div class="g-title">Hamarosan...</div>
+          <div class="g-desc">Hamarosan...</div>
+        </div></div>
+      </div>
+      <div class="g-item" style="grid-column:span 5; grid-row:span 1" onclick="openLightbox(2)">
+        <img src="images/question.jpg" alt="question">
+        <div class="g-overlay"><div>
+          <div class="g-title">Hamarosan...</</div>
+          <div class="g-desc">Hamarosan...</div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GAME MODES -->
+<section id="modes" style="max-width:1100px;margin:0 auto;padding:3rem 1rem">
+  <h2 class="text-3xl font-bold text-center mb-10">🎮 Játékmódok</h2>
+  <div class="grid grid-cols-2 gap-6">
+    
+    <!-- Survival -->
+    <div class="bg-gray-800 rounded-2xl shadow-lg p-6 hover:scale-105 transition-transform">
+      <h3 class="text-2xl font-bold mb-4">🌲 Survival</h3>
+      <p class="mb-4">Csatlakozz egy vanilla világhoz — építs, bányássz, kereskedj és alakítsd a világot!</p>
+      <ul class="list-disc list-inside text-gray-300">
+        <li>Közösségi túlélés és építés</li>
+        <li>Gazdaság alapok (aukciós ház)</li>
+        <li>Rendszeres közösségi események</li>
+      </ul>
+    </div>
+
+    <!-- Placeholder for future mode -->
+    <div class="bg-gray-800 rounded-2xl shadow-lg p-6 opacity-80">
+      <h3 class="text-2xl font-bold mb-4">🔧 Több jön hamarosan</h3>
+      <p class="mb-4">Hamarosan további játékmódok és extra tartalmak.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- MIÉRT JÓ AZ ENDERCLOUD -->
+<section id="why" style="max-width:1100px;margin:0 auto;padding:3rem 1rem">
+  <h2 class="text-3xl font-bold text-center mb-10">💎 Miért jó az EnderCloud?</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+    
+    <div class="bg-gray-800 rounded-2xl shadow-lg p-6 hover:scale-105 transition-transform">
+      <h3 class="text-xl font-bold mb-2">🎉 Rendszeres eventek</h3>
+      <p class="text-gray-300">Versenyek, nyeremények és közösségi rendezvények folyamatosan.</p>
+    </div>
+
+    <div class="bg-gray-800 rounded-2xl shadow-lg p-6 hover:scale-105 transition-transform">
+      <h3 class="text-xl font-bold mb-2">🤝 Barátságos közösség</h3>
+      <p class="text-gray-300">Segítőkész játékosok és támogató admin csapat.</p>
+    </div>
+
+    <div class="bg-gray-800 rounded-2xl shadow-lg p-6 hover:scale-105 transition-transform">
+      <h3 class="text-xl font-bold mb-2">⚡ Lag mentes játék</h3>
+      <p class="text-gray-300">HU host, 24/7 elérhetőség, stabil és gyors játékélmény.</p>
+    </div>
+
+  </div>
+
+  <div class="text-center mt-10">
+    <button class="btn" onclick="joinServer()">Csatlakozás</button>
+  </div>
+</section>
+
+<!-- FAQ / GYIK -->
+<section id="faq" style="max-width:1100px;margin:0 auto;padding:3rem 1rem">
+  <h2 class="text-3xl font-bold text-center mb-10">❓ GYIK</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    
+    <div class="bg-gray-800 rounded-2xl shadow-lg p-6 hover:scale-105 transition-transform">
+      <h3 class="text-2xl font-bold mb-4">Milyen verzió engedélyezett?</h3>
+      <p>Jelenleg a <b>1.21.10 verzió</b> Java használható a szerverünkhöz. (TLauncher Support)</p>
+    </div>
+
+    <div class="bg-gray-800 rounded-2xl shadow-lg p-6 hover:scale-105 transition-transform">
+      <h3 class="text-2xl font-bold mb-4">Hogyan tudok fellépni?</h3>
+      <p>Nyisd meg a Minecraftot, válaszd a <b>Többjátékos</b> módot, majd csatlakozás a címhez és írd be az IP-t: <b>server.endercloud.host</b>.</p>
+    </div>
+
+    <div class="bg-gray-800 rounded-2xl shadow-lg p-6 hover:scale-105 transition-transform">
+      <h3 class="text-2xl font-bold mb-4">Segítség kell?</h3>
+      <p>Csatlakozz a <a href="https://discord.gg/W7u3PKcjxJ" target="_blank" class="text-blue-400 underline">Discord szerverünkhöz</a> és nyiss hibajegyet a problémádhoz.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Záró rész -->
+<div class="text-center mt-16 max-w-3xl mx-auto">
+  <h3 class="text-3xl font-bold mb-4">👑 EnderCloud — Nem a megszokott!</h3>
+  <p class="text-gray-300 leading-relaxed">
+    Jelenleg a fókusz a Survival módon van — építs, fedezz fel és éld túl a világot a barátaiddal.
+  </p>
+</div>
+
+<!-- FOOTER -->
+<footer style="padding:2rem 1rem;text-align:center;border-top:1px solid rgba(255,255,255,0.03)">
+  <div style="max-width:980px;margin:0 auto;color:#98b3c6">© 2025 EnderCloud — Website Made By Kirilov</div>
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  let idx = 0;
+  function show(i){ slides.forEach((s,si)=> s.classList.toggle('active', si===i)); }
+  function nextSlide(){ idx = (idx+1)%slides.length; show(idx); }
+  function prevSlide(){ idx = (idx-1+slides.length)%slides.length; show(idx); }
+  show(0); let slideInterval = setInterval(nextSlide, 4800);
+  document.querySelector('.hero').addEventListener('mouseenter', ()=>clearInterval(slideInterval));
+  document.querySelector('.hero').addEventListener('mouseleave', ()=> slideInterval = setInterval(nextSlide,4800));
+
+  function tilt(e,el){ const rect = el.getBoundingClientRect(); const x = (e.clientX - rect.left) / rect.width; const y = (e.clientY - rect.top) / rect.height; const rx = (y - 0.5) * 12; const ry = (x - 0.5) * -12; el.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) scale(1.03)`; }
+  function resetTilt(el){ el.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg) scale(1)'; }
+
+  const imgs = [
+    'images/gallery-skyblock.jpg',
+    'images/gallery-pvp.jpg',
+    'images/gallery-bedwars.jpg',
+    'images/gallery-event.jpg'
+  ];
+  function openLightbox(i){ 
+    // egyszerű lightbox megoldás (ha nincs lightbox elem, akkor új lapon nyitjuk meg a képet)
+    const lbimg = document.getElementById('lbimg');
+    if(lbimg){
+      lbimg.src = imgs[i]; 
+      const lb = document.getElementById('lightbox'); 
+      lb.style.display='flex'; 
+    } else {
+      window.open(imgs[i], '_blank');
+    }
+  }
+  async function copyIP(){ try{ await navigator.clipboard.writeText(document.getElementById('ip-text').innerText); const b = document.querySelector('.ip-badge'); b.animate([{transform:'translateY(0)'},{transform:'translateY(-6px)'},{transform:'translateY(0)'}],{duration:420}); b.querySelector('.ghost').innerText='Kész'; setTimeout(()=>b.querySelector('.ghost').innerText='Másolás',1200); }catch(e){ alert('Másolás sikertelen'); }}
+  
+  async function joinServer(){
+    const ip = document.getElementById('ip-text').innerText || 'mcserver.mcsio';
+    const discord = 'https://discord.gg/vfYcuVub';
+  
+    try {
+      await navigator.clipboard.writeText(ip);
+      alert(`A szerver IP másolva: ${ip}\nMost átirányítunk a Discord szerverre!`);
+      window.open(discord, '_blank');
+    } catch(e) {
+      alert('Hiba történt az IP másolása közben. Átirányítás a Discord-ra...');
+      window.open(discord, '_blank');
+    }
+  }
+</script>
+
+<!-- Kirilov tag -->
+<div class="fixed bottom-0 right-0 bg-black text-white px-4 py-2 m-4 rounded-lg shadow-lg text-sm opacity-75 hover:opacity-100 transition">
+  Made by <span class="font-bold">Kirilov</span>
+</div>
+
+</body>
+</html>

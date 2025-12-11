@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="hu" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Optimized -->
+  <title>FastDone – Profi Weboldalkészítés, Webdesign és Webtárhely</title>
+  <meta name="description" content="FastDone – Profi weboldalkészítés Magyarországon. Készítsd el weboldalad biztonságosan, gyorsan és fizess csak a kész weboldalért. Mobilbarát, SEO-optimalizált webdesign és megbízható webtárhely.">
+  <meta name="keywords" content="weboldalkészítés, webdesign, webtárhely, mobilbarát weboldal, SEO-optimalizált, utólagos fizetés, FastDone, Magyarország">
+	
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+  <style>
+    html { color-scheme: dark; }
+    .bg-gray-850 { background-color: #1f1f1f; }
+    .floating { animation: float 6s ease-in-out infinite; }
+    .logo-float { animation: float 5s ease-in-out infinite; }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    @keyframes fd-fade { from { opacity: 0 } to { opacity: 1 } }
+    @keyframes fd-slide-up { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fd-slide-left { from { opacity: 0; transform: translateX(18px); } to { opacity: 1; transform: translateX(0); } }
+    .animate-fade { animation: fd-fade 700ms cubic-bezier(.16,.84,.24,1) both; }
+    .animate-slide { animation: fd-slide-up 750ms cubic-bezier(.16,.84,.24,1) both; }
+    .animate-slide-left { animation: fd-slide-left 750ms cubic-bezier(.16,.84,.24,1) both; }
+    .stagger > * { opacity: 0; transform: translateY(12px); }
+    .stagger.in-view > * {
+      animation-name: fd-slide-up;
+      animation-duration: 680ms;
+      animation-fill-mode: both;
+      animation-timing-function: cubic-bezier(.16,.84,.24,1);
+      animation-delay: calc(var(--i) * 80ms);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .floating, .logo-float, .animate-fade, .animate-slide, .animate-slide-left, .stagger > * { animation: none !important; transition: none !important; }
+    }
+    .interactive { transition: transform 270ms cubic-bezier(.2,.9,.3,1), box-shadow 270ms ease, opacity 200ms ease; }
+    .interactive:focus { outline: 2px solid rgba(99,102,241,0.14); outline-offset: 3px; }
+    [data-delay] { animation-delay: var(--delay, 0ms); }
+	/* Spinner (ha nem Tailwind-et használsz, ez alap CSS) */
+.loader {
+  border-top-color: #6366f1; /* Indigo-600 */
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+  </style>
+</head>
+<body class="bg-gray-900 text-gray-100 antialiased overflow-x-hidden">
+
+<!-- Header -->
+<header class="py-6 border-b border-gray-800 bg-gradient-to-b from-black/50 to-transparent fixed w-full z-50 backdrop-blur-sm animate-fade">
+  <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+    <h1 class="text-xl font-bold interactive logo-float">FastDone – Profi Weboldalkészítés Magyarországon</h1>
+    <nav class="space-x-4 hidden md:flex text-gray-300">
+      <a href="#features" class="hover:text-indigo-400 transition duration-500 ease-in-out interactive">Funkciók</a>
+      <a href="#pricing" class="hover:text-indigo-400 transition duration-500 ease-in-out interactive">Árazás</a>
+      <a href="#testimonials" class="hover:text-indigo-400 transition duration-500 ease-in-out interactive">Ajánlások</a>
+      <a href="#faq" class="hover:text-indigo-400 transition duration-500 ease-in-out interactive">GYIK</a>
+      <a href="#contact" class="hover:text-indigo-400 transition duration-500 ease-in-out interactive">Kapcsolat</a>
+    </nav>
+  </div>
+</header>
+
+<main class="pt-24">
+
+<!-- Hero -->
+<section class="py-20 lg:py-32 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+  <div data-aos="fade-right" data-aos-duration="1200" class="animate-slide-left">
+    <h2 class="text-5xl sm:text-6xl font-extrabold mb-6 leading-tight">Profi weboldal készítés gyorsan és biztonságosan</h2>
+    <p class="text-gray-300 mb-8 text-lg">A FastDone elkészíti a weboldalad mobilbarát, SEO-optimalizált dizájnnal, megbízható webtárhellyel. Fizess csak a kész és jóváhagyott weboldalért.</p>
+    <div class="flex flex-wrap gap-4">
+      <a href="#pricing" class="bg-indigo-600 px-8 py-4 rounded-lg text-white font-semibold shadow-lg hover:opacity-95 transition transform hover:scale-105 interactive">Vágj bele!</a>
+      <a href="#contact" class="border border-gray-700 px-8 py-4 rounded-lg hover:bg-white/5 font-semibold transition transform hover:scale-105 interactive">Kapcsolat</a>
+    </div>
+    <div class="flex mt-6 space-x-4 text-gray-400 text-sm stagger" aria-hidden="true">
+      <span style="--i:0">Személyes kommunikáció a projekt során</span>
+      <span style="--i:1">•</span>
+      <span style="--i:2">Megbízható Google Firebase tárhelyen</span>
+      <span style="--i:3">•</span>
+      <span style="--i:4">Biztonságos, utólagos fizetés</span>
+    </div>
+  </div>
+  <div data-aos="fade-left" data-aos-duration="1200" class="floating overflow-hidden rounded-3xl border border-gray-800 shadow-2xl h-80 sm:h-96 relative animate-fade">
+    <img src="preview.png" alt="FastDone weboldal előnézet" loading="lazy" class="w-full h-[110%] object-cover object-top transform hover:scale-105 transition duration-700">
+  </div>
+</section>
+
+<!-- Features -->
+<section id="features" class="py-20 max-w-7xl mx-auto px-6">
+  <h3 class="text-3xl font-bold mb-12 text-gray-100 text-center animate-fade" data-aos="fade-up">Teljes körű weboldal készítés szolgáltatás</h3>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 stagger" data-aos="zoom-in" data-aos-delay="0">
+    <div class="bg-gray-850 p-8 rounded-2xl border border-gray-800 text-center hover:scale-105 transform transition duration-500 interactive" style="--i:0">
+      <div class="mb-4 text-indigo-500 text-4xl" aria-hidden="true">🎨</div>
+      <h4 class="font-semibold text-xl mb-2">Modern Webdesign</h4>
+      <p class="text-gray-300 text-sm">Konverzióközpontú, mobilbarát dizájnok a márkádhoz igazítva.</p>
+    </div>
+    <div class="bg-gray-850 p-8 rounded-2xl border border-gray-800 text-center hover:scale-105 transform transition duration-500 interactive" style="--i:1">
+      <div class="mb-4 text-indigo-500 text-4xl" aria-hidden="true">☁️</div>
+      <h4 class="font-semibold text-xl mb-2">Kezelt Webtárhely</h4>
+      <p class="text-gray-300 text-sm">SSL, CDN, automatikus mentés, 99,8% üzemidő – megbízható és gyors.</p>
+    </div>
+    <div class="bg-gray-850 p-8 rounded-2xl border border-gray-800 text-center hover:scale-105 transform transition duration-500 interactive" style="--i:2">
+      <div class="mb-4 text-indigo-500 text-4xl" aria-hidden="true">🔒</div>
+      <h4 class="font-semibold text-xl mb-2">Privát Munkafolyamat</h4>
+      <p class="text-gray-300 text-sm">Minden lépést privátban egyeztetünk – nincs chatrobot, csak személyes kommunikáció.</p>
+    </div>
+    <div class="bg-gray-850 p-8 rounded-2xl border border-gray-800 text-center hover:scale-105 transform transition duration-500 interactive" style="--i:3">
+      <div class="mb-4 text-indigo-500 text-4xl" aria-hidden="true">💳</div>
+      <h4 class="font-semibold text-xl mb-2">Utólagos Fizetés</h4>
+      <p class="text-gray-300 text-sm">Csak a kész és jóváhagyott weboldal után fizetsz, biztonságos linkkel.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- Pricing -->
+<section id="pricing" class="py-20 max-w-7xl mx-auto px-6">
+  <h3 class="text-3xl font-bold mb-12 text-gray-100 text-center animate-fade" data-aos="fade-up">Megfizethető weboldalkészítés – fizetés csak a befejezés után</h3>
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 stagger" data-aos="flip-left">
+    <div class="p-8 rounded-3xl border border-gray-800 bg-gray-850 hover:scale-105 transform transition duration-500 interactive" style="--i:0">
+      <h4 class="text-xl font-semibold mb-2">Kezdő</h4>
+      <p class="text-3xl font-extrabold mb-4">15 000 Ft</p>
+	  <p class="text-green-400 font-semibold mb-4">📈 –20% ha kriptóval fizetsz (12 000 Ft)</p>
+      <ul class="text-gray-300 text-sm space-y-1 mb-4">
+		<li>Egylapos weboldal</li>
+		<li>Teljes SSL védelem</li>
+		<li>Havi frissítés (1)</li>
+		<li>.firebaseapp.com domain</li>
+		<li>4200 Ft / hó tárhely</li>
+		<li>Az első hónap ingyen!</li>
+      </ul>
+      <p class="text-green-400 font-semibold mb-2">💰 Utólagos fizetés a kész weboldalért</p>
+      <a href="#contact" class="block bg-indigo-600 px-6 py-3 rounded-lg text-white font-semibold text-center hover:scale-105 transition transform duration-500 interactive">Ezt választom</a>
+    </div>
+
+    <div class="p-8 rounded-3xl border border-indigo-500 bg-gray-850 shadow-lg hover:scale-105 transform transition duration-500 relative interactive" style="--i:1">
+      <span class="absolute top-0 right-0 bg-indigo-600 text-xs font-bold px-3 py-1 rounded-bl-2xl">Legnépszerűbb</span>
+      <h4 class="text-xl font-semibold mb-2">Business</h4>
+      <p class="text-3xl font-extrabold mb-4">30 000 Ft</p>
+	  <p class="text-green-400 font-semibold mb-4">📈 –20% ha kriptóval fizetsz (24 000 Ft)</p>
+      <ul class="text-gray-300 text-sm space-y-1 mb-4">
+		<li>Minden, ami a Kezdő csomagban</li>
+		<li>Maximum 4 oldal</li>
+		<li>SEO optimalizálás</li>
+		<li>Heti biztonsági mentés</li>
+		<li>Havi frissítés (korlátlan)</li>
+		<li>Elsőbbségi támogatás</li>
+		<li>Tartalmazza a webhelytérképet (sitemap)</li>
+		<li>.web.app domain</li>
+		<li>4200 Ft / hó tárhely</li>
+		<li>Az első hónap ingyen!</li>
+
+      </ul>
+      <p class="text-green-400 font-semibold mb-2">💰 Utólagos fizetés a kész weboldalért</p>
+      <a href="#contact" class="block bg-indigo-600 px-6 py-3 rounded-lg text-white font-semibold text-center hover:scale-105 transition transform duration-500 interactive">Kezdjük!</a>
+    </div>
+
+    <div class="p-8 rounded-3xl border border-gray-800 bg-gray-850 hover:scale-105 transform transition duration-500 interactive" style="--i:2">
+      <h4 class="text-xl font-semibold mb-2">Pro</h4>
+      <p class="text-3xl font-extrabold mb-4">50 000 Ft</p>
+	  <p class="text-green-400 font-semibold mb-4">📈 –20% ha kriptóval fizetsz (40 000 Ft)</p>
+      <ul class="text-gray-300 text-sm space-y-1 mb-4">
+		<li>Minden, ami a Business csomagban</li>
+		<li>Korlátlan oldalszám</li>
+		<li>A kód a tiéd</li>
+		<li>Szerkeszd magad a kódot, vagy kérj segítséget szakértőinktől</li>
+		<li>Csatlakoztasd saját domain-ed, vagy használd a .web.app-ot</li>
+		<li>4200 Ft / hó tárhely</li>
+		<li>Az első hónap ingyen!</li>
+
+      </ul>
+      <p class="text-green-400 font-semibold mb-2">💰 Utólagos fizetés a kész weboldalért</p>
+      <a href="#contact" class="block bg-indigo-600 px-6 py-3 rounded-lg text-white font-semibold text-center hover:scale-105 transition transform duration-500 interactive">Lépj szintet a Pro csomaggal!</a>
+    </div>
+  </div>
+</section>
+
+<!-- Crypto Payment Notice -->
+<section class="py-10 bg-gray-950 border-t border-gray-800">
+  <div class="max-w-4xl mx-auto px-6 text-center animate-fade" data-aos="fade-up">
+    <div class="bg-gray-850 border border-yellow-500/40 rounded-2xl p-6 shadow-lg">
+      <h3 class="text-2xl font-bold text-yellow-400 mb-2">⚠️ Fontos figyelmeztetés</h3>
+      <p class="text-gray-300 text-lg">
+        Jelenleg <span class="text-yellow-400 font-semibold">csak kriptovalutás fizetés</span> érhető el.<br>
+        A véglegesítés után biztonságos fizetési linket kapsz e-mailben, amellyel
+        <span class="text-yellow-400 font-semibold">Bitcoin</span>, 
+        <span class="text-yellow-400 font-semibold">Ethereum</span>,
+		<span class="text-yellow-400 font-semibold">Solana</span> vagy 
+        <span class="text-yellow-400 font-semibold">USDT</span> segítségével rendezheted a díjat.
+      </p>
+      <p class="text-gray-400 text-sm mt-4">
+        Köszönjük megértésed!
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- Testimonials -->
+<section id="testimonials" class="py-20 bg-gray-950">
+  <div class="max-w-7xl mx-auto px-6">
+    <h3 class="text-3xl font-bold mb-12 text-gray-100 text-center animate-fade" data-aos="fade-up">Ügyfeleink mondták</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 stagger" data-aos="fade-up">
+      <div class="bg-gray-850 p-8 rounded-3xl border border-gray-800 interactive" style="--i:0">
+        <p class="text-gray-300 mb-4">„4 nap alatt elindították a pékségünk weboldalát, a privát folyamat remek volt, és csak akkor fizettünk, amikor az oldal élővé vált. A kriptóval is sokat segítettek.”</p>
+        <p class="font-semibold text-gray-100">— Anna K., pékségtulajdonos</p>
+      </div>
+      <div class="bg-gray-850 p-8 rounded-3xl border border-gray-800 interactive" style="--i:1">
+        <p class="text-gray-300 mb-4">„Egy fiatalember hívott, aki azt ígérte, hogy villámgyorsan elkészíti a weboldalunkat. Este már hívott is hogy megvan. Mindenkinek ajánlom.”</p>
+        <p class="font-semibold text-gray-100">— Mark T., szabadúszó</p>
+      </div>
+      <div class="bg-gray-850 p-8 rounded-3xl border border-gray-800 interactive" style="--i:2">
+        <p class="text-gray-300 mb-4">“Egy kis fennakadás volt az elején, mert először nem értek a kriptóhoz, de gyorsan megoldódott mert segítettek, és végül profi weboldalt kaptunk. A fizetés csak a kész és jóváhagyott oldal után történt.”</p>
+        <p class="font-semibold text-gray-100">— Petra V., szalontulajdonos</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="py-20 max-w-7xl mx-auto px-6">
+  <h3 class="text-3xl font-bold mb-12 text-gray-100 text-center animate-fade" data-aos="fade-up">Gyakran Ismételt Kérdések</h3>
+  <div class="space-y-6 max-w-4xl mx-auto">
+    <details class="bg-gray-850 p-6 rounded-2xl border border-gray-800 interactive" data-aos="fade-up" data-aos-delay="0">
+      <summary class="cursor-pointer font-semibold text-lg">Mennyi idő alatt készül el egy weboldal?</summary>
+      <p class="text-gray-300 mt-2 text-sm">Általában 3–7 nap, a weboldal bonyolultságától és a javítási igényektől függően. Az egyszerű, egylapos weboldalak gyakran már 48 órán belül élővé válnak.</p>
+    </details>
+    <details class="bg-gray-850 p-6 rounded-2xl border border-gray-800 interactive" data-aos="fade-up" data-aos-delay="100">
+      <summary class="cursor-pointer font-semibold text-lg">Mikor fizetek?</summary>
+      <p class="text-gray-300 mt-2 text-sm">Csak akkor fizetsz, amikor a weboldal elkészült, és jóváhagytad a végleges verziót. A biztonságos, privát fizetési linket csak a megerősítésed után küldjük el.</p>
+    </details>
+    <details class="bg-gray-850 p-6 rounded-2xl border border-gray-800 interactive" data-aos="fade-up" data-aos-delay="200">
+      <summary class="cursor-pointer font-semibold text-lg">Kérhetek módosításokat fejlesztés közben?</summary>
+      <p class="text-gray-300 mt-2 text-sm">Igen — a részleteket privátban egyeztetjük, és addig finomítjuk, amíg teljesen elégedett nem vagy. Az Business és Pro csomagok korlátlan frissítést tartalmaznak a megállapodott keretek között</p>
+    </details>
+    <details class="bg-gray-850 p-6 rounded-2xl border border-gray-800 interactive" data-aos="fade-up" data-aos-delay="300">
+      <summary class="cursor-pointer font-semibold text-lg">Mit tartalmaz a hosting?</summary>
+      <p class="text-gray-300 mt-2 text-sm">A felügyelt tárhely tartalmazza az SSL-t, globális CDN-t, napi biztonsági mentéseket, üzemidő-figyelést és biztonsági frissítéseket. Pro csomagban a vásárlók kérhetik a weboldal fájljainak átadását, és saját maguk is hosztolhatják az oldalt.</p>
+    </details>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="py-20 max-w-7xl mx-auto px-6 text-center">
+  <h3 class="text-3xl font-bold mb-4 text-gray-100 animate-fade" data-aos="fade-up">Készen állsz az indulásra?</h3>
+  <p class="text-gray-300 mb-8 text-lg animate-fade" data-aos="fade-up" data-aos-delay="100">Minden részletet privátban egyeztetünk, hogy a weboldalad tökéletesen illeszkedjen a víziódhoz. Miután jóváhagytad a végeredményt, elküldjük a biztonságos, privát fizetési linket — csak a fejlesztés befejezése után fizetsz.</p>
+  <form id="contact-form" class="max-w-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 stagger" data-aos="fade-up" data-aos-delay="200">
+    <select id="plan" class="p-4 rounded-lg border border-gray-700 bg-gray-900 text-gray-100 md:col-span-2 interactive" aria-label="Válaszd ki a csomagodat">
+      <option selected disabled>Válaszd ki a csomagodat</option>
+      <option>Kezdő</option>
+      <option>Business (Legnépszerűbb)</option>
+      <option>Pro</option>
+    </select>
+    <input id="name" class="p-4 rounded-lg border border-gray-700 bg-gray-900 text-gray-100 interactive" placeholder="Név" aria-label="Név">
+    <input id="email" class="p-4 rounded-lg border border-gray-700 bg-gray-900 text-gray-100 interactive" placeholder="Email" aria-label="Email">
+    <textarea id="project" class="p-4 rounded-lg border border-gray-700 bg-gray-900 text-gray-100 md:col-span-2 interactive" rows="4" placeholder="Írd le a projektedet"></textarea>
+    <button type="submit" class="md:col-span-2 bg-indigo-600 px-6 py-4 rounded-lg text-white font-semibold hover:scale-105 transition transform duration-500 interactive">Küldés</button>
+  </form>
+</section>
+
+<!-- Add EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  // Initialize EmailJS
+  (function(){
+    emailjs.init('8qYwFI1PPBD23yr0g'); // Replace with your EmailJS public key
+  })();
+
+  // Form submission
+  const form = document.getElementById('contact-form');
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+	
+	const overlay = document.getElementById('loading-overlay');
+	overlay.classList.remove('hidden');
+
+    const templateParams = {
+      name: document.getElementById('name').value,
+      email: document.getElementById('email').value,
+      plan: document.getElementById('plan').value,
+      project: document.getElementById('project').value
+    };
+	
+	if (document.getElementById('name').value == document.getElementById('email').value || document.getElementById('project').value == document.getElementById('name').value) {
+		overlay.classList.add('hidden');
+		alert('Hiba történt, próbáld újra.');
+	} else {
+
+		emailjs.send('service_dhvt3lc', 'template_eli5qln', templateParams)
+		  .then(function(response) {
+			overlay.classList.add('hidden'); // Hide overlay on success
+			window.location.href = '/success';
+			form.reset();
+		  }, function(error) {
+			overlay.classList.add('hidden');
+			alert('Hiba történt, próbáld újra.');
+			console.error('EmailJS Error:', error);
+		  });
+	}
+
+  });
+</script>
+
+
+
+<footer class="mt-16 border-t border-gray-800 bg-gradient-to-t from-black/40 to-transparent p-6 text-gray-400 text-center animate-fade">
+  © 2025 FastDone — Privát és biztonságos weboldal, fizess csak elkészült oldalért
+  <div class="mt-2 space-x-4">
+    <a href="/contact" class="hover:text-indigo-400 transition">Impresszum</a> |
+    <a href="/terms" class="hover:text-indigo-400 transition">Terms and Conditions</a> |
+    <a href="/privacy" class="hover:text-indigo-400 transition">Privacy Policy</a>
+  </div>
+</footer>
+
+
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  // Initialize AOS (keeps original scroll animations)
+  AOS.init({ duration: 1000, easing: 'ease-in-out', once: true, mirror: false });
+
+  // Stagger & reveal system using IntersectionObserver
+  (function(){
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const staggerContainers = document.querySelectorAll('.stagger');
+
+    staggerContainers.forEach(container => {
+      // set CSS variable index for children
+      Array.from(container.children).forEach((child, i) => child.style.setProperty('--i', i));
+    });
+
+    if (prefersReduced) {
+      // if reduced motion, just make everything visible
+      staggerContainers.forEach(c => c.classList.add('in-view'));
+      return;
+    }
+
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    staggerContainers.forEach(c => io.observe(c));
+
+    // small entrance for header once page loaded
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.animate-fade, .animate-slide, .animate-slide-left').forEach(el => {
+        // add a tiny delay to create a natural cascade
+        if (!el.style.animationDelay) el.style.animationDelay = Math.random() * 120 + 'ms';
+      });
+    });
+  })();
+
+  // Improve interactive focus for keyboard users (tiny enhancement)
+  (function(){
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Tab') document.documentElement.classList.add('show-focus');
+    });
+  })();
+</script>
+
+<div id="loading-overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 hidden">
+  <div class="loader border-4 border-t-indigo-600 border-gray-300 rounded-full w-12 h-12 animate-spin"></div>
+</div>
+
+</body>
+</html>

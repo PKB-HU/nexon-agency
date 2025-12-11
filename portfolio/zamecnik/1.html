@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Zámečnická SOS — Pohotovost a Zámky | Brno</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0a0a0a;
+  --overlay-dark: rgba(0,0,0,0.55);
+  --overlay-soft: rgba(0,0,0,0.28);
+  --card:#f9f9f9;
+  --muted:#999;
+  --accent:#ffcc00;
+  --accent-2:#ffaa00;
+  --glass: rgba(255,255,255,0.05);
+  --glass-strong: rgba(255,255,255,0.12);
+  --radius:16px;
+  --maxw:1400px;
+  --container-padding:36px;
+  --g-gap:22px;
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;background:var(--bg);color:#fff;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+header{position:fixed;left:0;right:0;top:0;z-index:80;padding:16px 0;transition:backdrop-filter .25s,background .25s,border-color .25s;border-bottom:1px solid rgba(255,255,255,0.05)}
+header.scrolled{backdrop-filter: blur(6px);background:linear-gradient(180deg, rgba(0,0,0,0.28), rgba(0,0,0,0.12))}
+.nav-inner{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px}
+.brand{display:flex;align-items:center;gap:14px}
+.brand .title small{display:block;font-size:12px;color:var(--muted);font-weight:600}
+.brand .title strong{display:block;font-family:Playfair Display,serif;font-size:18px;color:#fff}
+nav{display:flex;gap:18px;align-items:center}
+nav a{font-weight:600;padding:8px 10px;border-radius:10px;color:#fff}
+.menu-toggle{display:none;background:transparent;border:0;color:#fff;font-size:20px}
+@media(max-width:880px){nav{display:none}.menu-toggle{display:inline-flex}}
+.hero-wrap{position:relative;overflow:hidden;height:90vh;min-height:600px;display:flex;align-items:center;justify-content:center;padding-top:36px}
+.parallax-bg{position:absolute;inset:0;background-image:url('assets/hero7.jpg');background-size:cover;background-position:center center;transform:translateZ(0);will-change:transform;filter:brightness(.55) contrast(.98);transition:transform .35s linear, filter .35s linear;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,var(--overlay-dark) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.6) 100%);pointer-events:none}
+.hero-inner{position:relative;z-index:6;padding:36px 22px;max-width:1100px;display:flex;align-items:center;justify-content:center}
+.hero-panel{width:100%;border-radius:20px;padding:40px;backdrop-filter: blur(10px) saturate(110%);background:var(--glass);border:1px solid rgba(255,255,255,0.06);box-shadow:0 20px 60px rgba(0,0,0,0.45);text-align:center}
+.hero-panel h1{font-family:Playfair Display,serif;font-size:clamp(34px,6.6vw,64px);margin:0 0 14px;line-height:1.02;letter-spacing:-0.02em;text-shadow:0 6px 18px rgba(0,0,0,0.6)}
+.hero-panel p.lead{color:#fff;opacity:0.92;font-size:clamp(15px,1.6vw,18px);max-width:800px;margin:0 auto 18px;line-height:1.6}
+.cta-row{display:flex;gap:14px;align-items:center;justify-content:center;margin-top:8px;flex-wrap:wrap}
+.btn{padding:14px 20px;border-radius:14px;border:0;font-weight:800;cursor:pointer;font-size:15px;transition: transform 0.3s ease, box-shadow 0.3s ease;}
+.btn:hover{transform: translateY(-3px) scale(1.03); box-shadow:0 25px 60px rgba(255,204,0,0.3);}
+.btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#081012;}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.15);color:#fff;}
+.hero-meta{display:flex;gap:12px;margin-top:18px;justify-content:center;flex-wrap:wrap}
+.meta-card{background:rgba(255,255,255,0.08);padding:10px 12px;border-radius:999px;font-weight:700;font-size:13px}
+.main-section{padding:64px 20px;max-width:1100px;margin:0 auto;line-height:1.6}
+.cards-grid{display:grid;grid-template-columns:1fr 360px;gap:var(--g-gap)}
+.card{background:rgba(255,255,255,0.05);border-radius:14px;padding:22px;border:1px solid rgba(255,255,255,0.03)}
+.card h3{margin:0 0 12px;font-family:Playfair Display,serif}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px;margin-top:28px}
+.service-card{background:rgba(255,255,255,0.06);padding:22px;border-radius:16px;text-align:center;border:1px solid rgba(255,255,255,0.05);}
+.service-card img{width:100px;height:100px;object-fit:contain;margin-bottom:12px}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:24px}
+.gallery-grid img{width:100%;height:180px;object-fit:cover;border-radius:12px;transition:transform 0.5s ease}
+.gallery-grid img:hover{transform:scale(1.05);}
+footer{padding:36px 20px;color:var(--muted);border-top:1px solid rgba(255,255,255,0.03)}
+@media(max-width:980px){.cards-grid{grid-template-columns:1fr}.gallery-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.gallery-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="nav-inner">
+    <div class="brand">
+      <div class="title">
+        <small>Zámečnická pohotovost</small>
+        <strong>Zámečnická SOS — Brno</strong>
+      </div>
+    </div>
+    <nav aria-label="Hlavní navigace">
+      <a href="#services">Služby</a>
+      <a href="#features">Výhody</a>
+      <a href="#gallery">Galerie</a>
+      <a href="#contact">Kontakt</a>
+    </nav>
+    <div class="nav-ghost">
+      <a class="btn btn-primary" href="tel:+420774163381">+420 774 163 381</a>
+      <button class="menu-toggle" aria-expanded="false" aria-label="Otevřít menu" onclick="toggleMobileMenu()">☰</button>
+    </div>
+  </div>
+  <div id="mobileMenu" style="display:none;padding:12px 20px;background:rgba(0,0,0,0.3)">
+    <a href="#services" style="display:block;padding:12px 0">Služby</a>
+    <a href="#features" style="display:block;padding:12px 0">Výhody</a>
+    <a href="#gallery" style="display:block;padding:12px 0">Galerie</a>
+    <a href="#contact" style="display:block;padding:12px 0">Kontakt</a>
+  </div>
+</header>
+
+<section class="hero-wrap" id="hero">
+  <div class="parallax-bg" id="parallaxBg" aria-hidden="true"></div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="hero-inner container">
+    <div class="hero-panel" role="region" aria-label="Úvodní informace">
+      <h1>Zámečnická pohotovost – rychle, bezpečně, spolehlivě</h1>
+      <p class="lead">Do 30 minut jsme u vás, ať už jde o zabouchnuté dveře, auto nebo výměnu zámku. Disponujeme odbornými znalostmi a moderním vybavením.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="tel:+420774163381">Zavolat</a>
+        <a class="btn btn-ghost" href="#services">Prohlédnout služby</a>
+      </div>
+      <div class="hero-meta">
+        <div class="meta-card">24/7 pohotovost</div>
+        <div class="meta-card">Moderní know-how</div>
+        <div class="meta-card">Široký rozsah služeb</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main class="main-section">
+  <section id="features" class="cards-grid">
+
+
+<section id="services" class="tile-pack">
+  <div style="max-width:1100px;margin:0 auto;padding:0 20px;text-align:center;">
+    <h2 style="margin-bottom:32px;">Naše služby / Our Services</h2>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;justify-items:center;">
+      <a href="https://www.zamecnik-sos.cz/zamecnicka-pohotovost" class="tile">
+        <img src="https://www.zamecnik-sos.cz/www/upload/menuitems/images/20210907033648217.jpg" alt="Zámečnická pohotovost" style="width:100%;max-width:220px;height:150px;object-fit:cover;border-radius:12px">
+        <h3 style="margin-top:8px;font-size:14px;">Zámečnická pohotovost</h3>
+      </a>
+      <a href="https://www.zamecnik-sos.cz/otevirani-dveri" class="tile">
+        <img src="https://www.zamecnik-sos.cz/www/upload/menuitems/images/2021090703373728.jpg" alt="Nouzové otevírání dveří" style="width:100%;max-width:220px;height:150px;object-fit:cover;border-radius:12px">
+        <h3 style="margin-top:8px;font-size:14px;">Nouzové otevírání dveří</h3>
+      </a>
+      <a href="https://www.zamecnik-sos.cz/otevirani-aut" class="tile">
+        <img src="https://www.zamecnik-sos.cz/www/upload/menuitems/images/20210907033900486.jpg" alt="Nouzové otevírání aut" style="width:100%;max-width:220px;height:150px;object-fit:cover;border-radius:12px">
+        <h3 style="margin-top:8px;font-size:14px;">Nouzové otevírání aut</h3>
+      </a>
+      <a href="https://www.zamecnik-sos.cz/vymenime-zamek-nebo-vlozku" class="tile">
+        <img src="https://www.zamecnik-sos.cz/www/upload/menuitems/images/20210907033717775.jpg" alt="Výměna a servis zámku a vložek" style="width:100%;max-width:220px;height:150px;object-fit:cover;border-radius:12px">
+        <h3 style="margin-top:8px;font-size:14px;">Výměna a servis zámku a vložek</h3>
+      </a>
+      <a href="https://www.zamecnik-sos.cz/vyroba-klicu" class="tile">
+        <img src="https://www.zamecnik-sos.cz/www/upload/menuitems/images/20210907033807400.jpg" alt="Výroba klíčů" style="width:100%;max-width:220px;height:150px;object-fit:cover;border-radius:12px">
+        <h3 style="margin-top:8px;font-size:14px;">Výroba klíčů</h3>
+      </a>
+      <a href="https://www.zamecnik-sos.cz/vyroba-kopirovani-a-opravy-autoklicu" class="tile">
+        <img src="https://www.zamecnik-sos.cz/www/upload/menuitems/images/20210907033820329.jpg" alt="Autoklíče" style="width:100%;max-width:220px;height:150px;object-fit:cover;border-radius:12px">
+        <h3 style="margin-top:8px;font-size:14px;">Autoklíče</h3>
+      </a>
+      <a href="https://www.zamecnik-sos.cz/zdolame-dvere" class="tile">
+        <img src="https://www.zamecnik-sos.cz/www/upload/menuitems/images/2021090703383390.jpg" alt="Bezpečnostní dveře" style="width:100%;max-width:220px;height:150px;object-fit:cover;border-radius:12px">
+        <h3 style="margin-top:8px;font-size:14px;">Bezpečnostní dveře</h3>
+      </a>
+      <a href="https://www.zamecnik-sos.cz/certifikaty" class="tile">
+        <img src="https://www.zamecnik-sos.cz/www/upload/menuitems/images/20210907033845132.jpg" alt="Certifikáty" style="width:100%;max-width:220px;height:150px;object-fit:cover;border-radius:12px">
+        <h3 style="margin-top:8px;font-size:14px;">Certifikáty</h3>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+	
+
+
+
+    <aside class="card" id="contact">
+      <h3>Kontakt & rezervace</h3>
+      <p>Tel: <a href="tel:+420774163381">+420 774 163 381</a></p>
+      <p>Email: <a href="mailto:zamecnikbrno@gmail.com">zamecnikbrno@gmail.com</a></p>
+      <div style="margin-top:18px">
+        <a class="btn btn-primary" href="tel:+420774163381">Zavolat</a>
+      </div>
+      <div style="margin-top:18px">
+        <h4>Kde nás najdete</h4>
+        <iframe class="embed-frame" src="https://www.google.com/maps?q=Brno&output=embed" title="Mapa - Zámečnická SOS" loading="lazy" style="width:100%;height:220px;border:0;border-radius:12px;"></iframe>
+      </div>
+    </aside>
+  </section>
+  
+
+
+<!-- Harmonized Alert Banner with Call Button -->
+<section class="alert-banner" 
+  style="
+    background: rgba(255, 204, 0, 0.1); /* soft yellow glass */
+    backdrop-filter: blur(12px) saturate(120%);
+    -webkit-backdrop-filter: blur(12px) saturate(120%);
+    border: 1px solid rgba(255, 204, 0, 0.3);
+    border-radius: 24px;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.35);
+    color: #fff;
+    text-align: center;
+    padding: 32px 24px;
+    margin: 36px auto;
+    max-width: 1100px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  "
+  onmouseover="this.style.transform='translateY(-3px) scale(1.02)'; this.style.boxShadow='0 20px 50px rgba(0,0,0,0.4)';" 
+  onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 12px 35px rgba(0,0,0,0.35)';"
+>
+  <h2 style="font-family:Playfair Display, serif; font-size:clamp(22px,2.5vw,28px); margin-bottom:16px; color: #fff; text-shadow: 0 4px 10px rgba(0,0,0,0.4);">
+    Nečekejte, až vás někdo vykrade!
+  </h2>
+  <p style="font-size:clamp(14px,1.4vw,18px); max-width:900px; margin:0 auto 24px; color: #fdf5d8; line-height:1.6;">
+    Připravte se předem. Poradíme, jak zabezpečit váš byt, dům nebo průmyslový objekt – jaké dveře a zámky použít, zda instalovat kamerový systém. Máme zkušenosti s tisíci vloupáními a víme, jak účinně zabránit zlodějům. Chcete to vědět taky? Napište, zavolejte, zastavte se. Jsme tu pro vás.
+  </p>
+  <a href="tel:+420774163381" 
+     style="
+       display:inline-block;
+       padding:14px 28px;
+       border-radius:16px;
+       font-weight:700;
+       font-size:16px;
+       background: linear-gradient(90deg, #ffcc00, #ffaa00);
+       color:#081012;
+       text-decoration:none;
+       transition: transform 0.3s ease, box-shadow 0.3s ease;
+     "
+     onmouseover="this.style.transform='translateY(-2px) scale(1.05)'; this.style.boxShadow='0 15px 40px rgba(0,0,0,0.35)';" 
+     onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='none';"
+  >
+    Zavolat: +420 774 163 381
+  </a>
+</section>
+
+<!-- Blog Section -->
+<section id="blog" style="max-width:1100px; margin:64px auto; padding:0 20px;">
+  <h2 style="text-align:center; margin-bottom:32px; font-family:Playfair Display, serif; font-size:clamp(24px,2.5vw,32px);">Novinky & Blog</h2>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:24px;">
+    
+    <!-- Blog Post 1 -->
+    <div class="blog-card" style="
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px) saturate(110%);
+      border:1px solid rgba(255,255,255,0.06);
+      border-radius:16px;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    " onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 20px 60px rgba(0,0,0,0.45)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+      <img src="assets/blog_1.jpg" alt="Blog 1 Image" style="width:100%; height:220px; object-fit:cover;">
+      <div style="padding:20px; flex:1; display:flex; flex-direction:column;">
+        <h3 style="margin:0 0 12px; font-family:Playfair Display, serif;">Jak vyměnit zámek u dveří?</h3>
+        <p style="flex:1; color:#ccc; font-size:14px; line-height:1.5;">Ztratili jste klíče od domu či bytu a potřebujete z bezpečnostních důvodů vyměnit tzv. zadlabací zámek, nejčastěji FAB vložku nebo dozický zámek na klasický klíč?</p>
+        <a href="#" style="
+          margin-top:16px;
+          align-self:flex-start;
+          padding:10px 18px;
+          border-radius:12px;
+          font-weight:600;
+          font-size:14px;
+          background: linear-gradient(90deg, #ffcc00, #ffaa00);
+          color:#081012;
+          text-decoration:none;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        " onmouseover="this.style.transform='translateY(-2px) scale(1.05)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.35)';" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='none';">Přečíst</a>
+      </div>
+    </div>
+
+    <!-- Blog Post 2 -->
+    <div class="blog-card" style="
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px) saturate(110%);
+      border:1px solid rgba(255,255,255,0.06);
+      border-radius:16px;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    " onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 20px 60px rgba(0,0,0,0.45)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+      <img src="assets/blog_2.jpg" alt="Blog 2 Image" style="width:100%; height:220px; object-fit:cover;">
+      <div style="padding:20px; flex:1; display:flex; flex-direction:column;">
+        <h3 style="margin:0 0 12px; font-family:Playfair Display, serif;">Jak se dá otevřít trezor?</h3>
+        <p style="flex:1; color:#ccc; font-size:14px; line-height:1.5;">Pořídili jste si trezor, ale obáváte se, že nebudete vědět, jak se do něj dostat, pokud zapomenete číselnou kombinaci či ztratíte klíč? Nebo jste se do této nepříjemné situace už přímo dostali?</p>
+        <a href="#" style="
+          margin-top:16px;
+          align-self:flex-start;
+          padding:10px 18px;
+          border-radius:12px;
+          font-weight:600;
+          font-size:14px;
+          background: linear-gradient(90deg, #ffcc00, #ffaa00);
+          color:#081012;
+          text-decoration:none;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        " onmouseover="this.style.transform='translateY(-2px) scale(1.05)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.35)';" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='none';">Přečíst</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- Locations Section -->
+<section id="locations" style="max-width:1100px; margin:64px auto; padding:0 20px;">
+  <h2 style="text-align:center; margin-bottom:32px; font-family:Playfair Display, serif; font-size:clamp(24px,2.5vw,32px);">Kde nás najdete</h2>
+
+  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px;">
+
+    <!-- Location 1: Brno -->
+    <div style="
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px) saturate(110%);
+      border:1px solid rgba(255,255,255,0.06);
+      border-radius:16px;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    " onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 20px 60px rgba(0,0,0,0.45)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+      <img src="assets/brno.jpg" alt="Brno" style="width:100%; height:220px; object-fit:cover;">
+      <div style="padding:20px; flex:1; display:flex; flex-direction:column;">
+        <h3 style="margin:0 0 12px; font-family:Playfair Display, serif;">Brno</h3>
+        <p style="flex:1; color:#ccc; font-size:14px; line-height:1.5;">Naše hlavní lokalita s plným servisem zámečnické pohotovosti.</p>
+        <a href="tel:+420774163381" style="
+          margin-top:16px;
+          align-self:flex-start;
+          padding:10px 18px;
+          border-radius:12px;
+          font-weight:600;
+          font-size:14px;
+          background: linear-gradient(90deg, #ffcc00, #ffaa00);
+          color:#081012;
+          text-decoration:none;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        " onmouseover="this.style.transform='translateY(-2px) scale(1.05)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.35)';" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='none';">Zavolat</a>
+      </div>
+    </div>
+
+    <!-- Location 2: Pohořelice -->
+    <div style="
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px) saturate(110%);
+      border:1px solid rgba(255,255,255,0.06);
+      border-radius:16px;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    " onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 20px 60px rgba(0,0,0,0.45)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+      <img src="assets/poho.jpg" alt="Pohořelice" style="width:100%; height:220px; object-fit:cover;">
+      <div style="padding:20px; flex:1; display:flex; flex-direction:column;">
+        <h3 style="margin:0 0 12px; font-family:Playfair Display, serif;">Pohořelice</h3>
+        <p style="flex:1; color:#ccc; font-size:14px; line-height:1.5;">Pokrýváme Pohořelice s rychlou pohotovostí a odborným servisem.</p>
+        <a href="tel:+420774163381" style="
+          margin-top:16px;
+          align-self:flex-start;
+          padding:10px 18px;
+          border-radius:12px;
+          font-weight:600;
+          font-size:14px;
+          background: linear-gradient(90deg, #ffcc00, #ffaa00);
+          color:#081012;
+          text-decoration:none;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        " onmouseover="this.style.transform='translateY(-2px) scale(1.05)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.35)';" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='none';">Zavolat</a>
+      </div>
+    </div>
+
+    <!-- Location 3: Hodonín -->
+    <div style="
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px) saturate(110%);
+      border:1px solid rgba(255,255,255,0.06);
+      border-radius:16px;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    " onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 20px 60px rgba(0,0,0,0.45)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+      <img src="assets/hodonin.jpg" alt="Hodonín" style="width:100%; height:220px; object-fit:cover;">
+      <div style="padding:20px; flex:1; display:flex; flex-direction:column;">
+        <h3 style="margin:0 0 12px; font-family:Playfair Display, serif;">Hodonín</h3>
+        <p style="flex:1; color:#ccc; font-size:14px; line-height:1.5;">Pokrýváme Hodonín a okolí s profesionálním a rychlým servisem.</p>
+        <a href="tel:+420774163381" style="
+          margin-top:16px;
+          align-self:flex-start;
+          padding:10px 18px;
+          border-radius:12px;
+          font-weight:600;
+          font-size:14px;
+          background: linear-gradient(90deg, #ffcc00, #ffaa00);
+          color:#081012;
+          text-decoration:none;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        " onmouseover="this.style.transform='translateY(-2px) scale(1.05)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.35)';" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='none';">Zavolat</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+ 
+</main>
+
+<footer>
+  <div class="main-section">
+    <p>Copyright © 2025 Zámečnická SOS</p>
+  </div>
+</footer>
+
+<script>
+function toggleMobileMenu(){
+  const menu=document.getElementById('mobileMenu');
+  if(menu.style.display==='none'){menu.style.display='block';}else{menu.style.display='none';}
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KirilovTech — Future-forward engineering & AI</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --brand-1: #4f46e5;
+      --brand-2: #06b6d4;
+      --bg-color: #0f172a;
+      --text-color: #f1f5f9;
+      --muted: #94a3b8;
+      --card-bg: #1e293b;
+      --glass-bg: rgba(31,41,55,0.6);
+      --placeholder-bg: #334155;
+    }
+
+    body {
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+    }
+
+    .kt-badge {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      display: inline-grid;
+      place-items: center;
+      color: white;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--brand-1), var(--brand-2));
+      box-shadow: 0 6px 18px rgba(15,23,42,0.12);
+    }
+
+    .hero-card {
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(79,70,229,0.85), rgba(6,182,212,0.8));
+      color: white;
+      padding: 2rem;
+      box-shadow: 0 20px 50px rgba(99,102,241,0.3);
+    }
+
+    .glass {
+      background: var(--glass-bg);
+      backdrop-filter: blur(6px);
+      border-radius: 12px;
+      padding: 1rem;
+    }
+
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 10px;
+      background: #1e293b;
+      display: grid;
+      place-items: center;
+      color: var(--text-color);
+      font-size: 1.2rem;
+    }
+
+    .img-placeholder {
+      background: var(--placeholder-bg);
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      color: var(--text-color);
+      font-weight: 600;
+    }
+
+    .card-bg {
+      background-color: var(--card-bg);
+    }
+
+    a, .nav-link, .text-muted { color: var(--text-color) !important; }
+    .btn-outline-secondary { border-color: #334155; color: var(--text-color); }
+    .btn-outline-secondary:hover { background-color: #334155; }
+
+    footer { color: var(--muted); }
+
+    @media (min-width: 992px){ .hero-title{font-size:3.25rem} }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-transparent py-3">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-3" href="#">
+      <div class="kt-badge">KT</div>
+      <div>
+        <div class="fw-bold">KirilovTech</div>
+        <div class="text-muted" style="font-size:.85rem">Future-forward engineering & AI</div>
+      </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#solutions">Solutions</a></li>
+        <li class="nav-item"><a class="nav-link" href="#labs">Research</a></li>
+        <li class="nav-item"><a class="nav-link" href="#leadership">Leadership</a></li>
+        <li class="nav-item ms-3"><a class="btn btn-dark" href="#labs">Explore Research</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="container py-5">
+  <div class="row align-items-center gy-4">
+    <div class="col-lg-6">
+      <h1 class="hero-title fw-extrabold">KirilovTech — engineering elegant, useful futures</h1>
+      <p class="lead text-muted mt-3">Research-grade AI, modular cloud infrastructure, and smart hardware design — built to scale and made for people. We combine research labs with production engineering to move ideas into reality.</p>
+      <div class="mt-4 d-flex gap-3">
+        <a class="btn btn-primary btn-lg" href="#solutions">Explore Solutions</a>
+        <a class="btn btn-outline-secondary btn-lg" href="#labs">View Research</a>
+      </div>
+      <div class="mt-4 d-flex gap-3">
+        <div class="glass">
+          <div class="text-muted small">Headquarters</div>
+          <div class="fw-semibold">Budapest, Hungary</div>
+        </div>
+        <div class="glass">
+          <div class="text-muted small">Founded</div>
+          <div class="fw-semibold">2024</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="hero-card">
+        <div class="d-flex justify-content-between align-items-start">
+          <div>
+            <div class="small text-uppercase opacity-75">Kirilov Cloud</div>
+            <div class="fs-6 opacity-75">Private server orchestration & AI deployment</div>
+          </div>
+          <div class="small opacity-75">v2.4</div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-6">
+            <div class="bg-white bg-opacity-10 p-3 rounded-3">
+              <div class="small opacity-75">Active clusters</div>
+              <div class="fs-4 fw-semibold">14</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="bg-white bg-opacity-10 p-3 rounded-3">
+              <div class="small opacity-75">Deployed models</div>
+              <div class="fs-4 fw-semibold">9</div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 small opacity-75">Research — Cloud — Robotics — Security</div>
+      </div>
+      <div class="bg-white bg-opacity-10 p-3 rounded-3 shadow-sm mt-3" style="width:220px; margin-left:auto">
+        <div class="fw-medium">Lab Snapshot</div>
+        <div class="small text-muted">Prototype: assistive exosuit (alpha)</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- SOLUTIONS -->
+<section id="solutions" class="container py-5">
+  <div class="row">
+    <div class="col-lg-8">
+      <h2 class="fw-bold">What we do</h2>
+      <p class="text-muted">KirilovTech blends long-term research with pragmatic engineering. Below are our core areas of expertise.</p>
+    </div>
+  </div>
+  <div class="row gx-4 gy-4 mt-3">
+    <div class="col-md-6 col-lg-4">
+      <div class="p-4 rounded-4 h-100 card-bg">
+        <div class="d-flex align-items-center gap-3">
+          <div class="service-icon">🤖</div>
+          <div>
+            <div class="fw-semibold">AI Research & Agents</div>
+            <div class="text-muted small mt-1">Custom models and interactive agents tailored to complex workflows.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+      <div class="p-4 rounded-4 h-100 card-bg">
+        <div class="d-flex align-items-center gap-3">
+          <div class="service-icon">☁️</div>
+          <div>
+            <div class="fw-semibold">Kirilov Cloud</div>
+            <div class="text-muted small mt-1">Private cloud, deployment pipelines, and MLOps for research and production.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+      <div class="p-4 rounded-4 h-100 card-bg">
+        <div class="d-flex align-items-center gap-3">
+          <div class="service-icon">🔒</div>
+          <div>
+            <div class="fw-semibold">Security & Trust</div>
+            <div class="text-muted small mt-1">Secure-by-design systems: cryptography, audits, and production hardening.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="labs" class="container py-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h3 class="fw-bold">Research & Labs</h3>
+      <p class="text-muted">Active labs where prototypes move quickly: Robotics Lab, AI Interaction Lab, and Cybersecurity Lab. Below are highlighted projects — each card has a place for an image.</p>
+    </div>
+    <a class="btn btn-outline-secondary" href="#">See Lab Reports</a>
+  </div>
+  <div class="row g-4">
+    <div class="col-md-6 col-lg-4">
+      <div class="p-4 rounded-4 h-100 card-bg d-flex flex-column">
+        <div class="img-placeholder mb-3" style="height:180px">No prototype has been made</div>
+        <div class="d-flex justify-content-between">
+          <div>
+            <div class="text-muted small">Wearables</div>
+            <div class="fw-semibold">Smart Home Control Gloves</div>
+          </div>
+          <div class="badge bg-secondary align-self-start">In Development</div>
+        </div>
+        <p class="text-muted mt-3">A glove, that assisted by the company's UWB tech, can control the smart devices in the house or anywhere else.</p>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+      <div class="p-4 rounded-4 h-100 card-bg d-flex flex-column">
+        <div class="img-placeholder mb-3" style="height:180px">Preview not available</div>
+        <div class="d-flex justify-content-between">
+          <div>
+            <div class="text-muted small">Edge AI</div>
+            <div class="fw-semibold">Merkur</div>
+          </div>
+          <div class="badge bg-secondary align-self-start">Beta</div>
+        </div>
+        <p class="text-muted mt-3">An AI, powered by OpenAI, that seamlessly integrates with OpenHab..</p>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+      <div class="p-4 rounded-4 h-100 card-bg d-flex flex-column">
+        <div class="img-placeholder mb-3" style="height:180px">Project image placeholder</div>
+        <div class="d-flex justify-content-between">
+          <div>
+            <div class="text-muted small">Robotics</div>
+            <div class="fw-semibold">UWB SmartNode</div>
+          </div>
+          <div class="badge bg-secondary align-self-start">Prototype</div>
+        </div>
+        <p class="text-muted mt-3">A tiny computer, that can use our UWB technology,and can communicate with other things (for example, our glove).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERSHIP -->
+<section id="leadership" class="container py-5">
+  <h3 class="fw-bold">Leadership</h3>
+  <p class="text-muted">Led by engineers and researchers focused on meaningful innovation and open collaboration. Owned by Kirilov Enterprises.</p>
+</section>
+
+<!-- FOOTER -->
+<footer class="container py-4 d-flex justify-content-between align-items-center">
+  <div class="text-muted">© <span id="year"></span> KirilovTech.</div>
+</footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

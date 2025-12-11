@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NEXON — Brand Scaling & Creative Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <style>
+    :root{
+      --glass: rgba(255,255,255,0.06);
+      --accent-start: #22c55e;
+      --accent-end: #16a34a;
+    }
+    body{font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial}
+    .glass{backdrop-filter:blur(6px);background:var(--glass);border:1px solid rgba(255,255,255,0.06)}
+    .neon-gradient{background:linear-gradient(90deg,var(--accent-start),var(--accent-end));-webkit-background-clip:text;color:transparent}
+
+body {
+  background: url('media/full_bg3.jpg') center center / cover no-repeat;
+}
+
+/* Dark overlay layer */
+body::before {
+  content: "";
+  position: fixed; /* cover the entire viewport */
+  inset: 0;
+  background: rgba(0,0,0,0.7); /* adjust opacity for darkness */
+  z-index: -1; /* keep it behind content */
+}
+
+
+    /* hero */
+    @keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-12px)}100%{transform:translateY(0)}}
+    .floaty{animation:floaty 6s ease-in-out infinite;background:linear-gradient(135deg,var(--accent-start),var(--accent-end));border-radius:50%}
+    @keyframes revealUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+    .reveal{animation:revealUp .9s cubic-bezier(.2,.9,.3,1) both}
+    .hero-title{letter-spacing:-0.02em;line-height:0.95}
+
+section.hero::before {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 200px; /* adjust */
+  background: linear-gradient(to bottom, rgba(0,0,0,0), #0a0a0a);
+  pointer-events: none;
+}
+
+
+    /* service cards */
+    .service-card{position:relative;overflow:hidden;border-radius:1rem;transition:transform .35s cubic-bezier(.2,.9,.3,1),box-shadow .35s;cursor:pointer}
+    .service-card img{width:100%;height:220px;object-fit:cover;transform:scale(1.05);transition:transform .8s}
+    .service-card .meta{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:1.25rem;background:linear-gradient(180deg,transparent 40%, rgba(2,6,23,0.45))}
+    .service-card h4{font-weight:700;margin-bottom:.25rem}
+    .service-card p{color:rgba(255,255,255,0.85);font-size:.95rem}
+    .service-card:hover{transform:translateY(-8px);box-shadow:0 12px 40px rgba(2,6,23,0.6)}
+    .service-card:hover img{transform:scale(1.12) translateY(-6px)}
+    .service-badge{position:absolute;top:12px;left:12px;padding:.35rem .6rem;background:rgba(24,128,48,0.45);backdrop-filter:blur(6px);border-radius:999px;font-size:.75rem}
+
+    /* buttons */
+    .glass-button{
+      background: linear-gradient(90deg,var(--accent-start),var(--accent-end));
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+    .glass-button:hover{
+      transform: scale(1.05);
+      box-shadow: 0 0 15px var(--accent-start), 0 0 25px var(--accent-end);
+    }
+
+    /* contact form */
+    .contact-form .input-group{
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select{
+      width: 100%;
+      padding: 1rem;
+      border-radius: 1rem;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #fff;
+      outline: none;
+      transition: 0.3s all;
+    }
+    .contact-form select{
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+    .contact-form label{
+      position: absolute;
+      top: 50%;
+      left: 1rem;
+      transform: translateY(-50%);
+      pointer-events: none;
+      transition: 0.2s all;
+      color: rgba(255,255,255,0.5);
+    }
+    .contact-form input:focus + label,
+    .contact-form input:not(:placeholder-shown) + label,
+    .contact-form textarea:focus + label,
+    .contact-form textarea:not(:placeholder-shown) + label,
+    .contact-form select:focus + label,
+    .contact-form select:not([value=""]) + label{
+      top: -0.5rem;
+      left: 1rem;
+      font-size: 0.75rem;
+      color: var(--accent-start);
+      background: black;
+      padding: 0 0.25rem;
+    }
+    .contact-form button{
+      width: 100%;
+      padding: 1rem;
+      border-radius: 2rem;
+      background: linear-gradient(90deg,var(--accent-start),var(--accent-end));
+      color: black;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.3s;
+    }
+    .contact-form button:hover{
+      transform: scale(1.05);
+      box-shadow: 0 0 15px var(--accent-start), 0 0 25px var(--accent-end);
+    }
+
+    /* pricing helpers */
+    .price-card{display:flex;flex-direction:column;justify-content:space-between;min-height:360px}
+    .price-icon{width:44px;height:44px;border-radius:10px;background:linear-gradient(90deg,var(--accent-start),var(--accent-end));display:inline-flex;align-items:center;justify-content:center}
+
+
+
+    /* small helpers */
+    @media (prefers-reduced-motion:reduce){.floaty,.reveal,.service-card,.glass-button,.contact-form button{transition:none!important;animation:none!important}}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url('media/bg5.jpg') center/cover no-repeat;
+  z-index: -10;
+}
+
+/* Add a bottom fade using a pseudo-element */
+section.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 200px; /* adjust fade height */
+  background: linear-gradient(to bottom, rgba(0,0,0,0), #0a0a0a); /* fade to next section's bg color */
+  pointer-events: none;
+  z-index: 10; /* above hero bg, below content */
+}
+
+
+  </style>
+</head>
+<body class="bg-black text-slate-100 antialiased">
+  <div class="absolute inset-0 -z-10">
+    <img src="media/bg2.jpg" alt="hero bg" class="w-full h-full object-cover brightness-60">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black"></div>
+  </div>
+  <header class="fixed w-full z-40">
+  <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between bg-transparent glass">
+    <a href="#" class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-green-500 to-green-700 flex items-center justify-center shadow-lg">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
+          <path d="M3 12h18" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M12 3v18" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="font-semibold text-lg text-white">NEXON</span>
+    </a>
+
+    <div class="hidden md:flex items-center gap-6 text-sm text-white/90">
+      <a href="#services" class="hover:underline flex items-center gap-2">Services</a>
+      <a href="portfolio.html" class="hover:underline flex items-center gap-2">Our Work</a>
+      <a href="#pricing" class="hover:underline flex items-center gap-2">Pricing</a>
+      <a href="#contact" class="hover:underline flex items-center gap-2">Contact</a>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <a href="#contact" class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-green-600 to-green-500 text-black font-semibold hover:scale-105 transition">
+        Get Started
+      </a>
+      <button id="menuBtn" class="md:hidden p-2 rounded-lg glass">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path d="M3 6h18M3 12h18M3 18h18" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+</header>
+
+
+  <main class="pt-20">
+    <!-- HERO -->
+<section class="relative w-full h-screen flex items-center justify-center overflow-hidden pt-16">
+
+<div class="hero-bg"></div>
+
+  <div class="max-w-6xl px-6 text-center relative z-10">
+    <h1 class="hero-title text-5xl sm:text-6xl md:text-7xl lg:text-[6.5rem] font-extrabold leading-tight reveal">
+      <span class="block">Make it <span class="neon-gradient">BIG</span></span>
+      <span class="block mt-2 text-4xl sm:text-5xl md:text-6xl font-semibold text-slate-200 opacity-90">Websites · Ads · Clipping</span>
+    </h1>
+
+    <div class="mt-10 inline-block glass rounded-3xl p-6 backdrop-blur-md shadow-xl reveal">
+      <div class="flex flex-col sm:flex-row items-center gap-4">
+        <a href="#contact" class="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-green-600 to-green-500 text-black font-semibold shadow-sm">
+          Work with us
+        </a>
+        <a href="#work" class="px-6 py-3 rounded-full glass">See our work</a>
+      </div>
+      <div class="mt-3 text-xs text-slate-300">Advanced Websites · Advertising campaigns · Creator clipping</div>
+    </div>
+	+-
+	
+  </div>
+
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-slate-300 text-sm opacity-80">
+    <div class="flex flex-col items-center gap-2">
+      <div class="w-7 h-10 rounded-3xl border border-white/30 flex items-start justify-center p-1">
+        <div class="w-1 h-2 rounded-full bg-white/70 animate-bounce"></div>
+      </div>
+      <div class="opacity-100">Learn More</div>
+    </div>
+  </div>
+
+</section>
+
+
+    <!-- WORK / CASE STUDIES -->
+    <section id="work" class="max-w-6xl mx-auto px-6 py-20">
+      <div class="mb-8 text-center reveal-on-scroll">
+        <h2 class="text-3xl font-bold">Some from our Portfolio</h2>
+        <p class="mt-2 text-slate-400">Here’s a glimpse into our work and the ideas we bring to life.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <article class="glass rounded-2xl overflow-hidden shadow-lg reveal-on-scroll">
+          <img src="media/project1.png" alt="project" class="w-full h-40 object-cover">
+          <div class="p-5">
+            <h3 class="font-semibold text-lg">Restaurant Apartment</h3>
+            <p class="mt-2 text-sm text-slate-300">We made this website in 3 days. We focused on the style of the apartments so we chose a nature inspired design.</p>
+            <div class="mt-4 flex items-center justify-between">
+              <div class="text-xs text-slate-400">Deliverables</div>
+              <div class="text-sm font-semibold">Website · Modern · Fast</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="glass rounded-2xl overflow-hidden shadow-lg reveal-on-scroll">
+          <img src="media/project4.png" alt="project" class="w-full h-40 object-cover">
+          <div class="p-5">
+            <h3 class="font-semibold text-lg">Agency Website</h3>
+            <p class="mt-2 text-sm text-slate-300">This website uses a modern design, with simple pricing, allowing users to quickly make decisions.</p>
+            <div class="mt-4 flex items-center justify-between">
+              <div class="text-xs text-slate-400">Deliverables</div>
+              <div class="text-sm font-semibold">Website · Modern · Minimalistic</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="glass rounded-2xl overflow-hidden shadow-lg reveal-on-scroll">
+          <img src="media/web8.png" alt="project" class="w-full h-40 object-cover">
+          <div class="p-5">
+            <h3 class="font-semibold text-lg">AI Product Website</h3>
+            <p class="mt-2 text-sm text-slate-300">This site details an AI product in Hungarian with a modern minimalistic style.</p>
+            <div class="mt-4 flex items-center justify-between">
+              <div class="text-xs text-slate-400">Deliverables</div>
+              <div class="text-sm font-semibold">Website · Clean · AI</div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="mt-8 text-center reveal-on-scroll">
+        <a href="portfolio.html" class="px-6 py-3 rounded-full glass">View Full Portfolio</a>
+      </div>
+    </section>
+
+<!-- PRICING / PLANS -->
+<section id="pricing" class="max-w-6xl mx-auto px-6 py-20 relative">
+  <div class="mb-12 text-center reveal-on-scroll">
+    <h2 class="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-600">Pricing Plans</h2>
+    <p class="mt-3 text-slate-400 text-lg">Choose the perfect plan to grow your business and stand out online.</p>
+  </div>
+
+  <!-- TOP SMALL CARDS (WEBSITES FIRST, CHEAPEST → MOST) -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal-on-scroll">
+
+    <!-- SIMPLE WEBSITE (cheapest website) -->
+    <div class="flex flex-col justify-between relative glass p-8 rounded-3xl shadow-lg border border-green-500/30 hover:shadow-[0_0_40px_rgba(34,197,94,0.5)] hover:scale-105 transition-transform duration-300">
+      <div>
+        <div class="flex items-center justify-between mb-4">
+          <div class="font-bold text-xl">Simple Website</div>
+          <div class="px-3 py-1 text-xs font-bold rounded-full bg-green-500 text-black">One-time</div>
+        </div>
+        <div class="mt-2 font-extrabold text-4xl text-green-400">$219</div>
+        <p class="mt-3 text-slate-300">Modern design, mobile-friendly, and ready for marketing campaigns.</p>
+        <ul class="mt-4 text-sm text-slate-200 space-y-2">
+          <li>✅ Modern design (Canva / Figma)</li>
+          <li>✅ Mobile-friendly layout</li>
+          <li>✅ Basic conversion copywriting</li>
+          <li>✅ Contact form integration</li>
+          <li>✅ Marketing-ready structure</li>
+        </ul>
+      </div>
+      <button class="glass-button mt-6 w-full py-3 rounded-2xl text-black font-semibold hover:scale-105 hover:shadow-[0_0_25px_rgba(34,197,94,0.7)]"
+              onclick="selectPlan('simple-website')">
+        Select Website
+      </button>
+    </div>
+
+    <!-- BUSINESS WEBSITE (next website, pricier) -->
+    <div class="flex flex-col justify-between relative glass p-8 rounded-3xl shadow-lg border border-green-600/40 hover:shadow-[0_0_50px_rgba(22,163,74,0.6)] hover:scale-105 transition-transform duration-300">
+      <div>
+        <div class="flex items-center justify-between mb-4">
+          <div class="font-bold text-xl">Business Website</div>
+          <div class="px-3 py-1 text-xs font-bold rounded-full bg-green-500 text-black">One-time</div>
+        </div>
+        <div class="mt-2 font-extrabold text-4xl text-green-500">$449</div>
+        <p class="mt-3 text-slate-300">Full-featured website for growing businesses. Optimized for conversions.</p>
+
+        <ul class="mt-4 text-sm text-slate-200 space-y-2">
+          <li>✅ Fully custom structure</li>
+          <li>✅ High-converting hero section</li>
+          <li>✅ Strategic CTA placement</li>
+          <li>✅ Basic SEO setup</li>
+          <li>✅ Speed & performance optimization</li>
+        </ul>
+        <p class="mt-2 text-slate-400 text-sm">Best for startups, fast-growing brands, online businesses, and companies that need continuous improvements.</p>
+      </div>
+      <button class="glass-button mt-6 w-full py-3 rounded-2xl text-black font-semibold hover:scale-105 hover:shadow-[0_0_25px_rgba(22,163,74,0.7)]"
+              onclick="selectPlan('business-website')">
+        Select Website
+      </button>
+    </div>
+
+    <!-- CARE PLAN (cheapest plan) -->
+    <div class="flex flex-col justify-between relative glass p-8 rounded-3xl shadow-lg border border-green-500/30 hover:shadow-[0_0_40px_rgba(34,197,94,0.5)] hover:scale-105 transition-transform duration-300">
+      <div>
+        <div class="flex items-center justify-between mb-4">
+          <div class="font-bold text-xl">CARE Plan</div>
+          <div class="px-3 py-1 text-xs font-bold rounded-full bg-green-500 text-black">Monthly</div>
+        </div>
+        <div class="mt-2 font-extrabold text-4xl text-green-400">$49 / month</div>
+        <p class="mt-3 text-slate-300">Stable, secure, worry-free website for small businesses.</p>
+        <ul class="mt-4 text-sm text-slate-200 space-y-2">
+          <li>✅ Hosting & maintenance included</li>
+          <li>✅ Regular updates</li>
+          <li>✅ Automated backups</li>
+          <li>✅ Security monitoring</li>
+          <li>✅ Basic support for small fixes</li>
+        </ul>
+      </div>
+      <button class="glass-button mt-6 w-full py-3 rounded-2xl text-black font-semibold hover:scale-105 hover:shadow-[0_0_25px_rgba(34,197,94,0.7)]"
+              onclick="selectPlan('care')">
+        Select CARE
+      </button>
+    </div>
+  </div>
+
+  <!-- GROW & SCALE PLANS SIDE BY SIDE (PLANS: cheapest → most expensive) -->
+  <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 reveal-on-scroll justify-center">
+
+    <!-- GROW PLAN ($99) -->
+    <div class="flex flex-col justify-between relative glass p-10 rounded-3xl shadow-2xl border-2 border-green-700/60 hover:shadow-[0_0_100px_rgba(22,163,74,0.8)] hover:scale-105 transition-transform duration-300 bg-gradient-to-tl from-black/20 via-green-900/30 to-black/20">
+      <div>
+        <div class="flex items-center justify-between mb-4">
+          <div class="font-bold text-2xl">⭐ GROW Plan</div>
+          <div class="px-3 py-1 text-xs font-bold rounded-full bg-green-700 text-black">⭐Most Popular</div>
+        </div>
+        <div class="mt-2 font-extrabold text-5xl text-green-400">$99 / month</div>
+        <p class="mt-3 text-slate-300 text-lg">Perfect for businesses using their website as a growth engine, with updates, optimizations, and fast support.</p>
+        <ul class="mt-4 text-sm text-slate-200 space-y-2">
+          <li>✅ Everything in CARE</li>
+          <li>✅ Monthly content & design updates</li>
+          <li>✅ Speed optimization</li>
+          <li>✅ Faster support response (within 48h)</li>
+        </ul>
+      </div>
+      <button class="glass-button mt-6 w-full py-4 rounded-3xl text-black font-bold text-lg hover:scale-105 hover:shadow-[0_0_40px_rgba(22,163,74,0.9)]"
+              onclick="selectPlan('grow')">
+        Select GROW
+      </button>
+    </div>
+
+    <!-- SCALE PLAN ($179) -->
+    <div class="flex flex-col justify-between relative glass p-10 rounded-3xl shadow-2xl border-2 border-green-700/60 hover:shadow-[0_0_100px_rgba(22,163,74,0.8)] hover:scale-105 transition-transform duration-300 bg-gradient-to-tl from-black/20 via-green-900/30 to-black/20">
+      <div>
+        <div class="flex items-center justify-between mb-4">
+          <div class="font-bold text-2xl">🚀 SCALE Plan</div>
+          <div class="px-3 py-1 text-xs font-bold rounded-full bg-green-700 text-black">⭐Most Efficient</div>
+        </div>
+        <div class="mt-2 font-extrabold text-5xl text-green-400">$179 / month</div>
+        <p class="mt-3 text-slate-300 text-lg">For growing companies that want to fully delegate their website and technical marketing tasks.</p>
+        <ul class="mt-4 text-sm text-slate-200 space-y-2">
+          <li>✅ Everything in GROW</li>
+          <li>✅ Unlimited website edits</li>
+          <li>✅ SEO fundamentals</li>
+          <li>✅ Strategy & marketing consultations</li>
+          <li>✅ Priority support (fast)</li>
+        </ul>
+      </div>
+      <button class="glass-button mt-6 w-full py-4 rounded-3xl text-black font-bold text-lg hover:scale-105 hover:shadow-[0_0_40px_rgba(22,163,74,0.9)]"
+              onclick="selectPlan('scale')">
+        Select SCALE
+      </button>
+    </div>
+
+  </div>
+
+</section>
+
+
+
+
+
+
+
+<!-- CONTACT / QUOTE -->
+<section id="contact" class="max-w-4xl mx-auto px-6 py-20 reveal-on-scroll">
+  <div class="glass rounded-3xl p-8 text-center">
+    <h3 class="text-2xl font-bold">Start a project with NEXON</h3>
+    <p class="mt-2 text-slate-300">Tell us about your goals and we'll suggest a scope and timeline.</p>
+
+    <!-- Form: note id and name attributes (emailjs uses names) -->
+    <form id="contact-form" class="contact-form mt-6" onsubmit="handleSubmit(event)">
+      <div class="input-group">
+        <input type="text" id="name" name="name" placeholder=" " required>
+        <label for="name">Your Name</label>
+      </div>
+
+      <div class="input-group">
+        <input type="email" id="email" name="email" placeholder=" " required>
+        <label for="email">Email</label>
+      </div>
+
+      <div class="input-group relative">
+        <select id="plan" name="plan_1" required
+          class="bg-black text-white border border-slate-700 rounded-xl px-4 py-3 w-full
+                 focus:ring-2 focus:ring-green-500 focus:border-green-400
+                 appearance-none">
+          <option class="bg-black text-white" value="None">None</option>
+          <option class="bg-black text-white" value="Simple Website — $219">Simple Website — $219</option>
+          <option class="bg-black text-white" value="Business Website — $449">Business Website — $449</option>
+          <option class="bg-black text-white" value="Custom Quote">Custom Quote</option>
+        </select>
+        <label for="plan" class="absolute left-4 top-3 text-slate-400 text-sm pointer-events-none transition-all">Select website</label>
+      </div>
+
+      <div class="input-group relative">
+        <select id="plan" name="plan_2" required
+          class="bg-black text-white border border-slate-700 rounded-xl px-4 py-3 w-full
+                 focus:ring-2 focus:ring-green-500 focus:border-green-400
+                 appearance-none">
+          <option class="bg-black text-white" value="None">None</option>
+          <option class="bg-black text-white" value="CARE Plan — $49 / month">CARE Plan — $49 / month</option>
+          <option class="bg-black text-white" value="GROW Plan — $99 / month">GROW Plan — $99 / month</option>
+          <option class="bg-black text-white" value="SCALE Plan — $179 / month">SCALE Plan — $179 / month</option>
+          <option class="bg-black text-white" value="Custom Quote">Custom Quote</option>
+        </select>
+        <label for="plan" class="absolute left-4 top-3 text-slate-400 text-sm pointer-events-none transition-all">Select a monthly plan</label>
+      </div>
+
+      <div class="input-group">
+        <input type="text" id="project" name="type" placeholder=" ">
+        <label for="project">Project type (website, video, clips)</label>
+      </div>
+
+      <div class="input-group">
+        <textarea id="message" name="desc" placeholder=" " rows="4" required></textarea>
+        <label for="message">Brief description</label>
+      </div>
+
+      <!-- reCAPTCHA v2 Checkbox -->
+      <div class="g-recaptcha mt-4" data-sitekey="6LcDIygsAAAAAMDTlHH5d8q7XOvHr87fOcJnFceU"></div>
+
+      <button type="submit" class="mt-6">Get Started</button>
+    </form>
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+      // Initialize EmailJS - replace with your user ID
+      (function(){
+        emailjs.init("8qYwFI1PPBD23yr0g"); // e.g. user_xxx... (replace)
+      })();
+
+      async function handleSubmit(event) {
+        event.preventDefault();
+        const form = document.getElementById('contact-form');
+
+        // Validate reCAPTCHA (v2 checkbox)
+        if (typeof grecaptcha === 'undefined') {
+          alert('reCAPTCHA not loaded. Please check your connection.');
+          return;
+        }
+        const recaptchaResponse = grecaptcha.getResponse();
+        if (!recaptchaResponse || recaptchaResponse.length === 0) {
+          alert('Please complete the reCAPTCHA.');
+          return;
+        }
+
+        // Option A: send entire form using sendForm (simplest)
+        // Make sure your EmailJS template has fields matching the form input names:
+        // from_name, from_email, plan, project_type, message, grecaptcha_response (optional)
+        // Replace YOUR_SERVICE_ID and YOUR_TEMPLATE_ID with your EmailJS values.
+        try {
+          // Attach reCAPTCHA response as a hidden input so it is sent with the form
+          let hiddenInput = document.createElement('input');
+          hiddenInput.type = 'hidden';
+          hiddenInput.name = 'grecaptcha_response';
+          hiddenInput.value = recaptchaResponse;
+          form.appendChild(hiddenInput);
+
+          const serviceID = 'service_dhvt3lc';
+          let templateID = 'template_w7u65zc';
+
+          const result2 = await emailjs.sendForm(serviceID, templateID, form);
+          console.log('EmailJS result:', result2);
+
+	//templateID = 'template_eurt00n';
+
+
+          window.location = "/success.html";
+
+          // Clean up: reset form + reCAPTCHA
+          form.reset();
+          if (typeof grecaptcha !== 'undefined') {
+            grecaptcha.reset();
+          }
+
+          // remove hidden input we added
+          form.removeChild(hiddenInput);
+        } catch (err) {
+          console.error('EmailJS error:', err);
+          alert('Sorry — could not send the message. Please try again later.');
+        }
+      }
+    </script>
+
+    <div class="mt-4 text-sm text-slate-400">Or email us directly: <a href="mailto:nexonagencyeu@gmail.com" class="text-slate-100 underline">nexonagencyeu@gmail.com</a></div>
+  </div>
+</section>
+
+
+  </main>
+
+  <footer class="py-8 text-center text-slate-400 text-sm">© 2025 NEXON Agency</footer>
+
+  <script>
+    // helper to set plan in the contact form and focus it
+    function selectPlan(planId){
+      const planSelect = document.getElementById('plan');
+      if(planSelect){
+        planSelect.value = planId;
+        planSelect.focus();
+        // trigger change event if needed
+        planSelect.dispatchEvent(new Event('change', { bubbles: true }));
+        // scroll contact into view on smaller screens
+        const contact = document.getElementById('contact');
+        if(contact){ contact.scrollIntoView({behavior:'smooth', block:'center'}); }
+      }
+    }
+  </script>
+</body>
+</html>

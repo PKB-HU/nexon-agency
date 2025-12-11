@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KirilovTech Blog Post</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Fira+Code&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #0f172a;
+      color: #f1f5f9;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      line-height: 1.7;
+    }
+    a, .text-muted { color: #cbd5e1 !important; text-decoration: none; }
+    h1, h2, h3 { color: #e2e8f0; }
+    .navbar-brand { font-weight: 700; font-size: 1.5rem; letter-spacing: 1px; }
+    .nav-link { font-weight: 500; transition: color 0.2s; }
+    .nav-link:hover { color: #3b82f6 !important; }
+    main.container { max-width: 900px; padding-top: 3rem; padding-bottom: 3rem; }
+    h1.fw-bold { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.8rem; margin-top: 2.5rem; margin-bottom: 1rem; border-left: 4px solid #3b82f6; padding-left: 0.75rem; }
+    .blog-content img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin: 1.5rem 0;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease;
+    }
+    .blog-content img:hover { transform: scale(1.02); }
+    .blog-content p { font-size: 1.1rem; margin-bottom: 1.2rem; }
+    .blog-content ul, .blog-content ol { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+    .blog-content li { margin-bottom: 0.7rem; }
+    .btn-outline-secondary {
+      border-color: #3b82f6;
+      color: #3b82f6;
+      transition: all 0.3s ease;
+    }
+    .btn-outline-secondary:hover {
+      background-color: #3b82f6;
+      color: #0f172a;
+      border-color: #3b82f6;
+    }
+    footer { border-top: 1px solid #334155; margin-top: 3rem; color: #94a3b8; font-size: 0.9rem; }
+    footer a { color: #3b82f6 !important; }
+    code, pre {
+      background-color: #1e293b;
+      color: #f1f5f9;
+      padding: 0.2rem 0.4rem;
+      border-radius: 6px;
+      font-family: 'Fira Code', monospace;
+    }
+    .blog-content {
+      background-color: #1e293b;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      transition: box-shadow 0.3s ease;
+    }
+    .blog-content:hover { box-shadow: 0 15px 40px rgba(0,0,0,0.7); }
+    .badge.bg-primary { background-color: #3b82f6 !important; font-weight: 500; }
+    @media (max-width: 768px) {
+      h1.fw-bold { font-size: 2rem; }
+      h2 { font-size: 1.5rem; }
+      .blog-content { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-transparent py-3">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">KirilovTech</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- BLOG POST -->
+<main class="container">
+  <h1 class="fw-bold">KIRILOV Vehicle Control Unit V3 – Powering Your 4-Wheeled Robot</h1>
+  <p class="text-muted">Published: Oct 23, 2025 | Category: <span class="badge bg-primary">Robotics</span></p>
+
+    <img src="../src/kirilov_vcu_v3.png" alt="KIRILOV Vehicle Control Unit V3" style="width:850px; height:auto; vertical-align:middle; margin-left:0.5rem;">
+
+  <div class="blog-content">
+    <p>If you’re diving into robotics and need a flexible, easy-to-use control board for a 4-wheeled robot, the <strong>KIRILOV Vehicle Control Unit V3</strong> is built exactly for that. It’s ideal for both development and prototyping.</p>
+
+    <h2>Overview</h2>
+    <p>The control unit is powered by an <strong>ESP32 microcontroller</strong>, handling logic, communication, and motor control. Two L293D motor driver ICs interface directly with your DC motors, allowing forward, backward, and precise turning movements. A set of development-friendly side pins makes connecting sensors and modules simple.</p>
+
+    <h2>Key Features</h2>
+    <ul>
+      <li><strong>ESP32 Core:</strong> Dual-core Wi-Fi & Bluetooth microcontroller. Reads sensors, executes motor control, and communicates wirelessly.</li>
+      <li><strong>Motor Control:</strong> Two L293D ICs control four DC motors (two per IC), supporting bidirectional movement and precise differential steering.</li>
+      <li><strong>Development Pins:</strong> Exposed pins along the edges for sensors, actuators, logic probing, or circuit experimentation.</li>
+      <li><strong>Power Management:</strong> Dedicated 3.3V, 5V, and GND pins for ESP32 and external peripherals like servos or sensors.</li>
+    </ul>
+
+    <h2>How It Works</h2>
+    <ol>
+      <li><strong>Input Signals:</strong> Commands come from sensors, remote controllers, or Wi-Fi/Bluetooth.</li>
+      <li><strong>ESP32 Processing:</strong> Interprets commands and decides motor actions using custom firmware.</li>
+      <li><strong>Motor Driving:</strong> ESP32 sends signals to L293D drivers, which switch higher current to motors safely.</li>
+      <li><strong>Robot Movement:</strong> Forward/backward and differential steering allow precise navigation.</li>
+      <li><strong>Debug & Expand:</strong> Side pins enable monitoring and adding new modules like distance sensors or LEDs.</li>
+    </ol>
+
+    <h2>Why This Board Stands Out</h2>
+    <ul>
+      <li><strong>Dual Functionality:</strong> Works as a standalone motor controller or a development board for sensors and circuits.</li>
+      <li><strong>Ease of Troubleshooting:</strong> Exposed signals mean no need to desolder or probe tiny pads.</li>
+      <li><strong>Expandable & Flexible:</strong> Add line-following, obstacle detection, or wireless modules with minimal wiring.</li>
+    </ul>
+
+    <h2>Applications</h2>
+    <ul>
+      <li>Educational robotics kits</li>
+      <li>Rapid prototyping of small autonomous vehicles</li>
+      <li>Motor control development projects</li>
+      <li>IoT-based robotic applications</li>
+    </ul>
+
+    <h2>Final Thoughts</h2>
+    <p>The <strong>KIRILOV Vehicle Control Unit V3</strong> combines power, flexibility, and usability. With ESP32, L293D motor drivers, and accessible development pins, it’s both a learning platform and a reliable robotic control system—perfect for building fully autonomous 4-wheeled robots or experimenting with sensors and motor projects.</p>
+  </div>
+
+  <div class="mt-4 text-center">
+    <a class="btn btn-outline-secondary" href="../blogs.html">← Back</a>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="container py-4 d-flex justify-content-between align-items-center">
+  <div class="text-muted">© <span id="year"></span> KirilovTech — Built with curiosity.</div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

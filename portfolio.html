@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NEXON Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{
+      --glass: rgba(255,255,255,0.06);
+      --accent-start: #22c55e;
+      --accent-end: #16a34a;
+    }
+    body{font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial}
+    .glass{backdrop-filter:blur(6px);background:var(--glass);border:1px solid rgba(255,255,255,0.06)}
+    .neon-gradient{background:linear-gradient(90deg,var(--accent-start),var(--accent-end));-webkit-background-clip:text;color:transparent}
+
+    body {
+      background: url('media/full_bg3.jpg') center center / cover no-repeat;
+      color: #f1f1f1;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      z-index: -1;
+    }
+
+    .reveal{animation:revealUp .9s cubic-bezier(.2,.9,.3,1) both}
+    @keyframes revealUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+    .portfolio-card{position:relative;overflow:hidden;border-radius:1rem;transition:transform .35s,box-shadow .35s;cursor:pointer}
+    .portfolio-card img{width:100%;height:220px;object-fit:cover;transform:scale(1.05);transition:transform .8s}
+    .portfolio-card:hover{transform:translateY(-8px);box-shadow:0 12px 40px rgba(2,6,23,0.6)}
+    .portfolio-card:hover img{transform:scale(1.12) translateY(-6px)}
+    .portfolio-card .meta{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:1.25rem;background:linear-gradient(180deg,transparent 40%, rgba(2,6,23,0.45))}
+  </style>
+</head>
+<body class="antialiased">
+
+<header class="fixed w-full z-40">
+  <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between bg-transparent glass">
+    <a href="#" class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-green-500 to-green-700 flex items-center justify-center shadow-lg">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
+          <path d="M3 12h18" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M12 3v18" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="font-semibold text-lg text-white">NEXON</span>
+    </a>
+    <div class="hidden md:flex items-center gap-6 text-sm text-white/90">
+      <a href="/" class="hover:underline flex items-center gap-2">Home</a>
+    </div>
+  </nav>
+</header>
+
+<main class="pt-20">
+
+
+  <!-- PORTFOLIO GRID -->
+  <section id="portfolio" class="max-w-6xl mx-auto px-6 py-20 reveal-on-scroll">
+    <div class="mb-12 text-center reveal">
+      <h2 class="text-4xl font-bold neon-gradient">Creative Work</h2>
+      <p class="mt-2 text-slate-400 text-lg">Websites, videos, and campaigns we've delivered for our clients.</p>
+    </div>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  <!-- Card 1 -->
+  <a href="portfolio/pevotka/2.html" class="portfolio-card glass rounded-2xl overflow-hidden shadow-lg reveal block">
+    <img src="media/project1.png" alt="Project 1">
+    <div class="meta">
+      <h3 class="font-semibold text-lg">Restaurant Apartment</h3>
+    </div>
+  </a>
+
+  <!-- Card 2 -->
+  <a href="portfolio/zamecnik/1.html" class="portfolio-card glass rounded-2xl overflow-hidden shadow-lg reveal block">
+    <img src="media/web2.png" alt="Project 2">
+    <div class="meta">
+      <h3 class="font-semibold text-lg">Locksmithing Website</h3>
+    </div>
+  </a>
+
+  <!-- Card 3 -->
+  <a href="portfolio/endercloud/index.html" class="portfolio-card glass rounded-2xl overflow-hidden shadow-lg reveal block">
+    <img src="media/web3.png" alt="Project 3">
+    <div class="meta">
+      <h3 class="font-semibold text-lg">Minecraft Server Website</h3>
+    </div>
+  </a>
+
+  <a href="portfolio/fastdone/index.html" class="portfolio-card glass rounded-2xl overflow-hidden shadow-lg reveal block">
+    <img src="media/web4.png" alt="Project 3">
+    <div class="meta">
+      <h3 class="font-semibold text-lg">Agency Website</h3>
+    </div>
+  </a>
+
+  <a href="portfolio/kirilov/index.html" class="portfolio-card glass rounded-2xl overflow-hidden shadow-lg reveal block">
+    <img src="media/web5.png" alt="Project 3">
+    <div class="meta">
+      <h3 class="font-semibold text-lg">Small Community Website</h3>
+    </div>
+  </a>
+
+  <a href="portfolio/kirilovtech/index.html" class="portfolio-card glass rounded-2xl overflow-hidden shadow-lg reveal block">
+    <img src="media/web6.png" alt="Project 3">
+    <div class="meta">
+      <h3 class="font-semibold text-lg">Tech / Hosting Company Website</h3>
+    </div>
+  </a>
+
+  <a href="portfolio/klorix1/index.html" class="portfolio-card glass rounded-2xl overflow-hidden shadow-lg reveal block">
+    <img src="media/web7.png" alt="Project 3">
+    <div class="meta">
+      <h3 class="font-semibold text-lg">AI Company Website 1</h3>
+    </div>
+  </a>
+
+  <a href="portfolio/klorix2/index.html" class="portfolio-card glass rounded-2xl overflow-hidden shadow-lg reveal block">
+    <img src="media/web8.png" alt="Project 3">
+    <div class="meta">
+		<h3 class="font-semibold text-lg">AI Company Website 2</h3>
+    </div>
+  </a>
+
+  <a href="portfolio/redosint/index.html" class="portfolio-card glass rounded-2xl overflow-hidden shadow-lg reveal block">
+    <img src="media/web9.png" alt="Project 3">
+    <div class="meta">
+      <h3 class="font-semibold text-lg">Simple Software Website</h3>
+    </div>
+  </a>
+
+  <a href="portfolio/stray/index.html" class="portfolio-card glass rounded-2xl overflow-hidden shadow-lg reveal block">
+    <img src="media/web10.png" alt="Project 3">
+    <div class="meta">
+      <h3 class="font-semibold text-lg">Social Media App Landing Page</h3>
+    </div>
+  </a>
+
+  <a href="portfolio/vetenx/index.html" class="portfolio-card glass rounded-2xl overflow-hidden shadow-lg reveal block">
+    <img src="media/web11.png" alt="Project 3">
+    <div class="meta">
+      <h3 class="font-semibold text-lg">AI Tool Website</h3>
+    </div>
+  </a>
+</div>
+
+
+  </section>
+
+</main>
+
+<footer class="py-8 text-center text-slate-400 text-sm">© 2025 NEXON Agency</footer>
+
+</body>
+</html>
